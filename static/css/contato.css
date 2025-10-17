@@ -1,0 +1,47 @@
+/* Contato */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  width: 220px;
+  transition: all 0.3s ease; /* suaviza a animação */
+}
+
+.contact-box:hover {
+  background-color: #e0f7fa; /* muda fundo ao passar o mouse */
+  border-color: #3498db;     /* muda a borda */
+  transform: translateY(-5px); /* efeito de “levantar” a caixa */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* sombra suave */
+}
+
+
+.contact-box img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.contact-box p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.contact-github p { color: #000; }
+.contact-linkedin p { color: #0A66C2; }
+.contact-whatsapp p { color: #25D366; }
+.contact-email p { color: #f8c024; }

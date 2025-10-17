@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sobre - Wagner Costa</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    >
+
+    <!-- CSS principais -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/content.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" href="static/css/sobre.css">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="hero">
+      <div class="hero-left">
+        <h1>Wagner Costa</h1>
+      </div>
+
+      <!-- Menu com Bootstrap -->
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="projetos.html">Projetos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cv.html">C.V.</a>
+            </li>  
+            <li class="nav-item">
+              <a class="nav-link" href="contato.html">Contato</a>
+            </li>    
+          </ul>
+        </div>  
+      </nav>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <section class="content">
+      <header>
+        <h2>Sobre Mim</h2>
+      </header>
+      
+      <main class="sobre-container">
+        <!-- Flip Card da foto -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="static/imagem/imagens/Wagner.Costa.jpg.jfif"
+                   alt="Foto de Wagner Costa"
+                   class="img-responsive img-thumbnail square-img">
+            </div>
+            <div class="flip-card-back">
+              <h3>WAGNER COSTA</h3>
+              <p>39 anos</p>
+              <p>Casado</p>
+              <p>Engenheiro de Produção em transição para TI</p>
+              <p>DSM - FATEC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texto sobre você -->
+        <section class="sobre-texto">
+          <p>
+            Olá! Sou <strong>WAGNER COSTA</strong>, engenheiro com experiência em gestão empresarial, processos administrativos e gestão pública. Iniciante na área de TI, atualmente me dedico aos estudos em <strong>DSM - Desenvolvimento de Software Multiplataforma - FATEC</strong>, com o objetivo de adquirir habilidades práticas e conhecimentos técnicos em TI, integrando-os à minha experiência profissional, a fim de criar soluções funcionais, criativas e bem estruturadas, unindo estética e desempenho.
+          </p>
+
+          <p>
+            Minha jornada combina experiências em gestão e produção, e busca na programação e no estudo constante de novas tecnologias aprimorar meus projetos e entregar resultados de qualidade.
+          </p>
+
+          <p>
+            Este portfólio foi desenvolvido com <strong>Python (Flask)</strong>, <strong>HTML/CSS</strong> e <strong>JavaScript</strong>, refletindo meu compromisso em aprender e aplicar boas práticas no desenvolvimento web.
+          </p>
+        </section>
+      </main>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div style="position:absolute; left:20px; top:50%; transform: translateY(-50%); display:flex; gap:15px; align-items:center;">
+        <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle">
+          <img src="static/imagem/logos/github.png" alt="GitHub">
+        </a>
+        <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="icon-circle">
+          <img src="static/imagem/logos/Linkedin.jpg" alt="LinkedIn">
+        </a>
+        <a href="https://wa.me/5512981056787" target="_blank" class="icon-circle">
+          <img src="static/imagem/logos/whatsapp.png" alt="WhatsApp">
+        </a>
+      </div>
+
+      <div style="text-align:center; flex:1;">
+        <h3>WGCosta</h3>
+        <p>Em constante aprendizado.</p>
+        <p>&copy; 2025 - Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>

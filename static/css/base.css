@@ -1,0 +1,35 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  zoom: 1; /* força o zoom padrão */
+  transform: none; /* evita distorções por transform herdado */
+  font-size: 100%; /* garante escala de fonte padrão */
+  max-width: 100%; /* impede “zoom” horizontal */
+  overflow-x: hidden; /* evita rolagem lateral indesejada */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Títulos de página centralizados ---------- */
+section.content > header h1,
+section.content > header h2,
+section.content > header h3 {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+ 

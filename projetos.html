@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projetos - Wagner Costa</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    >
+
+    <!-- CSS principais -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/content.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" href="static/css/projetos.css">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="hero">
+      <div class="hero-left">
+        <h1>Wagner Costa</h1>
+      </div>
+
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="projetos.html">Projetos</a></li>
+            <li class="nav-item"><a class="nav-link" href="cv.html">C.V.</a></li>
+            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          </ul>
+        </div>  
+      </nav>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <section class="content">
+      <header>
+        <h2>Projetos</h2>
+      </header>
+
+      <main style="max-width:1200px; padding:20px; margin:0 auto;">
+        <!-- Aviso de construção -->
+        <div style="display:flex; justify-content:center; gap:8px; font-size:24px; color:#ff0000; margin-bottom:15px;">
+          ⚠ Página em construção ⚠
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:20px;">
+
+          <!-- COLUNA ESQUERDA: Projetos -->
+          <section style="flex:2; display:flex; flex-direction:column; gap:10px; min-width:250px;">
+            <h2 style="font-size:24px; font-weight:bold; margin-bottom:10px;">Projetos em Andamento</h2>
+
+            <div id="carousel" style="display:flex; overflow-x:auto; gap:10px; scroll-behavior:smooth; padding-bottom:10px;">
+              <!-- Projeto 1 -->
+              <a href="/projeto1" style="min-width:220px; flex-shrink:0; border:1px solid #ccc; border-radius:10px; padding:10px; background:#f9f9f9;">
+                <img src="static/imagem/imagens/projetos_api.jpg" alt="Projeto 1" style="width:100%; height:150px; object-fit:cover; border-radius:5px; margin-bottom:5px;">
+                <h3 style="margin:0; font-size:16px; font-weight:bold;">Projeto 1</h3>
+                <p style="font-size:14px; color:#555;">Projeto 1 texto</p>
+              </a>
+
+              <!-- Projeto 2 -->
+              <a href="/projeto2" style="min-width:220px; flex-shrink:0; border:1px solid #ccc; border-radius:10px; padding:10px; background:#f9f9f9;">
+                <img src="static/imagem/imagens/projetos_site.jpg" alt="Projeto 2" style="width:100%; height:150px; object-fit:cover; border-radius:5px; margin-bottom:5px;">
+                <h3 style="margin:0; font-size:16px; font-weight:bold;">Projeto 2</h3>
+                <p style="font-size:14px; color:#555;">Projeto acadêmico (FATEC) com o objetivo de criar um site particular e aprender todas</p>
+              </a>
+            </div>
+          </section>
+
+          <!-- COLUNA DIREITA: Ferramentas -->
+          <section style="flex:1; display:flex; flex-direction:column; gap:10px; min-width:200px;">
+            <h2 style="font-size:24px; font-weight:bold; margin-bottom:10px;">Ferramentas</h2>
+
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:center; gap:10px; border:1px solid #ccc; padding:10px; border-radius:10px; background:#f0f0f0;">
+                <img src="static/imagem/ferramentas/html.png" alt="HTML" style="width:40px; height:40px; border-radius:50%;">
+                <div>
+                  <p style="margin:0; font-weight:bold;">HTML5</p>
+                  <p style="margin:0; font-size:12px; color:#555;">Estrutura semântica das páginas</p>
+                </div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:10px; border:1px solid #ccc; padding:10px; border-radius:10px; background:#f0f0f0;">
+                <img src="static/imagem/ferramentas/css.png" alt="CSS" style="width:40px; height:40px; border-radius:50%;">
+                <div>
+                  <p style="margin:0; font-weight:bold;">CSS3</p>
+                  <p style="margin:0; font-size:12px; color:#555;">Estilização e layout responsivo</p>
+                </div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:10px; border:1px solid #ccc; padding:10px; border-radius:10px; background:#f0f0f0;">
+                <img src="static/imagem/ferramentas/python.png" alt="Python" style="width:40px; height:40px; border-radius:50%;">
+                <div>
+                  <p style="margin:0; font-weight:bold;">Python</p>
+                  <p style="margin:0; font-size:12px; color:#555;">Backend e análise de dados</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div style="position:absolute; left:20px; top:50%; transform: translateY(-50%); display:flex; gap:15px; align-items:center;">
+        <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle">
+          <img src="static/imagem/logos/github.png" alt="GitHub">
+        </a>
+        <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="icon-circle">
+          <img src="static/imagem/logos/Linkedin.jpg" alt="LinkedIn">
+        </a>
+        <a href="https://wa.me/5512981056787" target="_blank" class="icon-circle">
+          <img src="static/imagem/logos/whatsapp.png" alt="WhatsApp">
+        </a>
+      </div>
+
+      <div style="text-align:center; flex:1;">
+        <h3>WGCosta</h3>
+        <p>Em constante aprendizado.</p>
+        <p>&copy; 2025 - Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>
