@@ -1,26 +1,75 @@
+/* ===== HEADER ===== */
 header.hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #222;
   color: #fff;
-  padding: 15px 10px 0px 20px;
+  padding: 15px 20px;
+  flex-wrap: wrap;
 }
 
-header.hero img {
-  width: 80px;
-  height: auto;
-  margin-right: 15px;
+section.content header h2 {
+  font-size: 32px;
+  padding: 15px;
+  margin: 0px auto 20px auto;
+  text-align: center;
+  color: #333;
 }
 
-.navbar-nav li a {
-  color: white !important;
-  margin-right: 5px;
+header.hero h1 {
+  font-size: 1.8em;
+  margin: 0;
+  color: #fff;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+.navbar-nav li {
+  margin-right: 8px;
 }
 
 .navbar-nav .nav-link {
+  color: #ddd !important;
   font-size: 15px;
-  font-weight: 450;
-  letter-spacing: 2px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  padding: 8px 14px;
+  transition: all 0.3s ease;
 }
 
+/* === Efeito névoa ao passar o mouse === */
+.navbar-nav .nav-link:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.15); /* névoa leve */
+}
+
+/* === Página atual === */
+.navbar-nav .nav-link.active {
+  color: #ffcc00 !important; /* texto amarelo */
+  font-weight: 600;
+}
+
+/* === Página atual + hover (também mostra névoa) === */
+.navbar-nav .nav-link.active:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important; /* fica branco no hover */
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  header.hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 5px 0;
+  }
+}

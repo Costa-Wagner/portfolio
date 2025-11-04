@@ -9,6 +9,11 @@
   margin: 0 auto;
 }
 
+section.content {
+  background-color: #f9f9f9;
+  flex: 1;
+}
+
 .contact-box {
   display: flex;
   flex-direction: column;
@@ -18,17 +23,16 @@
   padding: 20px;
   border-radius: 12px;
   background: #f9f9f9;
-  width: 220px;
-  transition: all 0.3s ease; /* suaviza a animação */
+  width: 20px;
+  transition: all 0.3s ease;
 }
 
 .contact-box:hover {
-  background-color: #e0f7fa; /* muda fundo ao passar o mouse */
-  border-color: #3498db;     /* muda a borda */
-  transform: translateY(-5px); /* efeito de “levantar” a caixa */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* sombra suave */
+  background-color: #e0f7fa;
+  border-color: #3498db;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
-
 
 .contact-box img {
   width: 100px;
@@ -39,8 +43,12 @@
 .contact-box p {
   margin: 0;
   font-weight: bold;
+  font-size: 14px; 
+  text-align: center;
+  word-wrap: break-word;
 }
 
+/* Cores específicas */
 .contact-github p { color: #000; }
 .contact-linkedin p { color: #0A66C2; }
 .contact-whatsapp p { color: #25D366; }

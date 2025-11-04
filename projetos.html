@@ -49,126 +49,100 @@
     <!-- CONTEÚDO -->
     <section class="content">
       <header>
-        <h2>Projetos</h2>
+        <h2>Projetos & Ferramentas</h2>
       </header>
 
-      <main style="max-width:1200px; padding:20px; margin:0 auto;">
-        <!-- Aviso de construção -->
-        <div style="display:flex; justify-content:center; gap:8px; font-size:24px; color:#ff0000; margin-bottom:15px;">
-          ⚠ Página em construção ⚠
+      <div class="container">
+        <!-- PROJETOS -->
+        <h4 class="ferramentas-titulo">Projetos em Desenvolvimento</h4>
+        <div class="row">
+          <!-- Projeto 1 -->
+          <div class="col-md-6 mb-4">
+            <a href="https://janosys-project-api1.vercel.app/" target="_blank" class="contact-box">
+              <img src="static/imagem/imagens/proj_1_api.jpg" class="img-fluid projeto-img" alt="Projeto 1">
+              <h3>Projeto API</h3>
+              <p>
+                Projeto acadêmico (1º sem. FATEC) onde atuo como Product Owner da equipe JanoSys, que tem por objetivo desenvolver uma solução digital para facilitar a visualização e interpretação dos dados do CENSO 2010/2022.
+              </p>
+            </a>
+          </div>
+
+          <!-- Projeto 2 -->
+          <div class="col-md-6 mb-4">
+            <a href="https://ws-start-ten.vercel.app/" target="_blank" class="contact-box">
+              <img src="static/imagem/imagens/proj_2_site.jpg" class="img-fluid projeto-img" alt="Projeto 2">
+              <h3>Projeto Site Particular</h3>
+              <p>
+                Projeto acadêmico voltado ao desenvolvimento de habilidades em criação de sites pessoais, explorando conceitos de desenvolvimento web, experiência do usuário e design digital.
+              </p>
+            </a>
+          </div>
         </div>
 
-        <div style="display:flex; flex-wrap:wrap; gap:20px;">
+        <!-- FERRAMENTAS -->
+        <h4 class="ferramentas-titulo mt-5">Ferramentas em Aprendizagem</h4>
 
-          <!-- COLUNA ESQUERDA: Projetos -->
-          <section style="flex:2; display:flex; flex-direction:column; gap:10px; min-width:250px;">
-            <h2 style="font-size:24px; font-weight:bold; margin-bottom:10px;">Projetos em Desenvolvimento</h2>
-
-            <div id="carousel" style="display:flex; overflow-x:auto; gap:10px; scroll-behavior:smooth; padding-bottom:10px;">
-              <!-- Projeto 1 -->
-              <a href="/projeto1" style="min-width:220px; flex-shrink:0; border:1px solid #ccc; border-radius:10px; padding:10px; background:#f9f9f9;">
-                <img src="static/imagem/imagens/proj_1_api.jpg" alt="Projeto 1" style="width:100%; height:150px; object-fit:cover; border-radius:5px; margin-bottom:5px;">
-                <h3 style="margin:0; font-size:16px; font-weight:bold;">Projeto 1</h3>
-                <p style="font-size:14px; color:#555;">Projeto acadêmico (1º sem. FATEC) onde atuo como Product Owner da equipe JanoSys, que tem por objetivo desenvolver uma solução digital para facilitar a visualização e a interpretação dos dados do CENSO 2010/2022, apoiando o usuário (fictício: Secretário/Prefeitura) na tomada de decisões sobre a melhor distribuição dos recursos públicos a cada região do município.</p>
-              </a>
-
-              <!-- Projeto 2 -->
-              <a href="/projeto2" style="min-width:220px; flex-shrink:0; border:1px solid #ccc; border-radius:10px; padding:10px; background:#f9f9f9;">
-                <img src="static/imagem/imagens/proj_2_site.jpg" alt="Projeto 2" style="width:100%; height:150px; object-fit:cover; border-radius:5px; margin-bottom:5px;">
-                <h3 style="margin:0; font-size:16px; font-weight:bold;">Projeto 2</h3>
-                <p style="font-size:14px; color:#555;">Projeto acadêmico (1º sem. da FATEC) voltado ao desenvolvimento de habilidades em criação de sites pessoais, explorando conceitos de desenvolvimento web, experiência do usuário e design digital, por meio da criação de um site pessoal que integra funcionalidade, estética e estrutura organizada.</p>
-              </a>
-            </div>
-          </section>
-
-          <!-- COLUNA DIREITA: Ferramentas -->
-          <section style="flex:1; display:flex; flex-direction:column; gap:10px; min-width:200px;">
-            <h2 style="font-size:24px; font-weight:bold; margin-bottom:10px;">Ferramentas</h2>
-            
-            <h2 style="font-size:14px; font-weight:bold; margin-bottom:0x;">Frontend</h2>
-
-            <div style="display:flex; flex-direction:column; gap:10px; font-weight:bold;">
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Html.png" alt="HTML">
-                <p>HTML5</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/CSS.png" alt="CSS">
-                <p>CSS</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/JavaScript.png" alt="JavaScript">
-                <p>JavaScript</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Flask.png" alt="Flask">
-                <p>Flask</p>
-              </div> 
-             
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Vercel.png" alt="Vercel">
-                <p>Vercel</p>
-              </div>
-                        
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Figma.png" alt="Figma">
-                <p>Figma</p>
-              </div>
-
-              <h2 style="font-size:14px; font-weight:bold; margin-bottom:0px;">Backend</h2>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Pandas.png" alt="Pandas">
-                <p>Pandas</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Plotly.png" alt="Plotly">
-                <p>Plotly</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/python-logo.png" alt="Python">
-                <p>Python</p>
-              </div>
-
-              <h2 style="font-size:14px; font-weight:bold; margin-bottom:0px;">Demais Ferramentas</h2>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/GitHub.png" alt="GitHub">
-                <p>GitHub</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Git_bash.png" alt="Git_bash">
-                <p>Git_bash</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/Jira.png" alt="Jira">
-                <p>Jira</p>
-              </div>
-
-              <div class="ferramenta-box">
-                <img src="static/imagem/logos/MySQL.png" alt="MySQL">
-                <p>MySQL</p>
-              </div>
+        <div class="ferramentas-section">
+          <div class="ferramentas-track">
+            <div class="ferramentas-grid">
+              <div class="ferramenta-box"><img src="static/imagem/logos/Html.png" alt="HTML5"><p>HTML5</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/CSS.png" alt="CSS"><p>CSS</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/JavaScript.png" alt="JavaScript"><p>JavaScript</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Flask.png" alt="Flask"><p>Flask</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Vercel.png" alt="Vercel"><p>Vercel</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Figma.png" alt="Figma"><p>Figma</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/python-logo.png" alt="Python"><p>Python</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Pandas.png" alt="Pandas"><p>Pandas</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Plotly.png" alt="Plotly"><p>Plotly</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/GitHub.png" alt="GitHub"><p>GitHub</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Git_bash.png" alt="Git Bash"><p>Git Bash</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Jira.png" alt="Jira"><p>Jira</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/MySQL.png" alt="MySQL"><p>MySQL</p></div>
             </div>
 
-          </section>
+            <!-- Duplicação para rolagem contínua -->
+            <div class="ferramentas-grid">
+              <div class="ferramenta-box"><img src="static/imagem/logos/Html.png" alt="HTML5"><p>HTML5</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/CSS.png" alt="CSS"><p>CSS</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/JavaScript.png" alt="JavaScript"><p>JavaScript</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Flask.png" alt="Flask"><p>Flask</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Vercel.png" alt="Vercel"><p>Vercel</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Figma.png" alt="Figma"><p>Figma</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/python-logo.png" alt="Python"><p>Python</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Pandas.png" alt="Pandas"><p>Pandas</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Plotly.png" alt="Plotly"><p>Plotly</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/GitHub.png" alt="GitHub"><p>GitHub</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Git_bash.png" alt="Git Bash"><p>Git Bash</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Jira.png" alt="Jira"><p>Jira</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/MySQL.png" alt="MySQL"><p>MySQL</p></div>
+            </div>
 
+            <div class="ferramentas-grid">
+              <div class="ferramenta-box"><img src="static/imagem/logos/Html.png" alt="HTML5"><p>HTML5</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/CSS.png" alt="CSS"><p>CSS</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/JavaScript.png" alt="JavaScript"><p>JavaScript</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Flask.png" alt="Flask"><p>Flask</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Vercel.png" alt="Vercel"><p>Vercel</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Figma.png" alt="Figma"><p>Figma</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/python-logo.png" alt="Python"><p>Python</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Pandas.png" alt="Pandas"><p>Pandas</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Plotly.png" alt="Plotly"><p>Plotly</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/GitHub.png" alt="GitHub"><p>GitHub</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Git_bash.png" alt="Git Bash"><p>Git Bash</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/Jira.png" alt="Jira"><p>Jira</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/MySQL.png" alt="MySQL"><p>MySQL</p></div>
+            </div>
+          </div>
         </div>
-      </main>
+
+      </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
       <div style="position:absolute; left:20px; top:50%; transform: translateY(-50%); display:flex; gap:15px; align-items:center;">
         <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle">
-          <img src="static/imagem/logos/GitHub.png" alt="GitHub">
+          <img src="static/imagem/logos/github.png" alt="GitHub">
         </a>
         <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="icon-circle">
           <img src="static/imagem/logos/Linkedin.jpg" alt="LinkedIn">
@@ -184,5 +158,19 @@
         <p>&copy; 2025 - Todos os direitos reservados.</p>
       </div>
     </footer>
+
+    <!-- MARCAR A PÁGINA ATUAL -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const currentPage = window.location.pathname.split("/").pop();
+          const navLinks = document.querySelectorAll(".navbar .nav-link");
+
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+              link.classList.add("active");
+            }
+          });
+        });
+      </script>
   </body>
 </html>

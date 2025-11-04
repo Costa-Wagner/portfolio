@@ -60,7 +60,7 @@
         <a href="https://github.com/Costa-Wagner" target="_blank" class="contact-box" 
           style="display:flex; flex-direction:column; align-items:center; text-decoration:none; 
                   border:1px solid #ccc; padding:20px; border-radius:12px; background:#f9f9f9; 
-                  width:220px;">
+                  width:260px;">
           <img src="static/imagem/qrcodes/qr_code_github.png" alt="GitHub QR" class="qrcode" 
               style="width:140px; height:140px; margin-bottom:12px;">
           <p style="margin:0; font-weight:bold; color:#000;"><i class="fab fa-github"></i> GitHub</p>
@@ -70,7 +70,7 @@
         <a href="https://www.linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="contact-box" 
           style="display:flex; flex-direction:column; align-items:center; text-decoration:none; 
                   border:1px solid #ccc; padding:20px; border-radius:12px; background:#f9f9f9; 
-                  width:220px;">
+                  width:260px;">
           <img src="static/imagem/qrcodes/qr_code_linkedin.png" alt="LinkedIn QR" class="qrcode" 
               style="width:140px; height:140px; margin-bottom:12px;">
           <p style="margin:0; font-weight:bold; color:#0A66C2;"><i class="fab fa-linkedin"></i> LinkedIn</p>
@@ -80,7 +80,7 @@
         <a href="https://wa.me/5512981056787" target="_blank" class="contact-box" 
           style="display:flex; flex-direction:column; align-items:center; text-decoration:none; 
                   border:1px solid #ccc; padding:20px; border-radius:12px; background:#f9f9f9; 
-                  width:220px;">
+                  width:260px;">
           <img src="static/imagem/qrcodes/qr_code_whatsapp.png" alt="WhatsApp QR" class="qrcode" 
               style="width:140px; height:140px; margin-bottom:12px;">
           <p style="margin:0; font-weight:bold; color: #25d366;;"><i class="fab fa-whatsapp"></i> +55 12 98105-6787</p>
@@ -90,10 +90,10 @@
         <a href="mailto:wagnergcosta@hotmail.com" target="_blank" class="contact-box" 
           style="display:flex; flex-direction:column; align-items:center; text-decoration:none; 
                   border:1px solid #ccc; padding:20px; border-radius:12px; background:#f9f9f9; 
-                  width:220px;">
+                  width:260px;">
           <img src="static/imagem/qrcodes/qr_code_email.png" alt="E-mail QR" class="qrcode" 
               style="width:140px; height:140px; margin-bottom:12px;">
-          <p style="margin:0; font-weight:bold; color: #fcc102;;"><i class="fab fa-envelope"></i> wagnergcosta@hotmail.com </p>
+          <p style="margin:0; font-weight:bold; color: #fcc102;;"> wagnergcosta@hotmail.com </p>
         </a>
       </main>
     </section>
@@ -118,5 +118,19 @@
         <p>&copy; 2025 - Todos os direitos reservados.</p>
       </div>
     </footer>
+
+    <!-- MARCAR A PÁGINA ATUAL -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const currentPage = window.location.pathname.split("/").pop();
+          const navLinks = document.querySelectorAll(".navbar .nav-link");
+
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+              link.classList.add("active");
+            }
+          });
+        });
+      </script>
   </body>
 </html>

@@ -1,30 +1,179 @@
-/* Ferramentas */
-.ferramenta-box {
+/* ========== Projetos ========== */
+.contact-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  border: 1px solid #ccc;
-  padding: 6px 8px;
+  text-decoration: none;
+  border: 2px solid #ccc;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+section.content {
+  background-color: #f9f9f9;
+  flex: 1;
+}
+
+.contact-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.projeto-img {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 12px;
   border-radius: 8px;
-  background: #f5f5f5;
-  width: 160px;          /* <- diminui a largura */
+  object-fit: cover;
+}
+
+.contact-box h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #086aeb;
+  text-align: center;
+}
+
+.contact-box p {
+  font-size: 13px;
+  color: #555;
+  text-align: justify;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* ========== Seção de Ferramentas ========== */
+
+.ferramentas-section {
+  background: #99bdec4f;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden; /* ✅ necessário para esconder o loop */
+  position: relative;
+}
+
+/* Título das ferramentas */
+.ferramentas-titulo {
+  color: #086aeb;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+/* ======= NOVO: trilha de rolagem ======= */
+.ferramentas-track {
+  display: flex;
+  width: calc(200%); /* duplicação para rolagem contínua */
+  animation: scroll 40s linear infinite;
+}
+
+/* pausa a rolagem ao passar o mouse */
+.ferramentas-section:hover .ferramentas-track {
+  animation-play-state: paused;
+}
+
+/* Grid horizontal dos boxes (duplicado dentro da track) */
+.ferramentas-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Box circular */
+.ferramenta-box {
+  flex: 0 0 auto;
+  width: 70px;
+  height: 70px;
+  border: 2px solid #dad5d5;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .ferramenta-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .ferramenta-box img {
-  width: 52px;           /* <- ícone menor */
-  height: 52px;
-  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  margin-bottom: 4px;
 }
 
 .ferramenta-box p {
   margin: 0;
   font-weight: bold;
-  font-size: 13px;
-  color: #333;
+  font-size: 9px;
+  text-align: center;
+}
+
+/* ======= NOVO: animação de esteira ======= */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========== Responsividade ========== */
+@media (max-width: 992px) {
+  .contact-box {
+    flex: 1 1 48%;
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-box {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .projeto-img {
+    height: 180px;
+  }
+
+  .ferramentas-grid {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .projeto-img {
+    height: 160px;
+  }
+
+  .contact-box p {
+    font-size: 12px;
+  }
+
+  .ferramenta-box {
+    width: 60px;
+    height: 60px;
+  }
 }

@@ -13,11 +13,11 @@
     >
 
     <!-- CSS principais -->
-    <link rel="stylesheet" href="static/css/base.css">
     <link rel="stylesheet" href="static/css/header.css">
-    <link rel="stylesheet" href="static/css/content.css">
     <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" href="static/css/base.css">
     <link rel="stylesheet" href="static/css/sobre.css">
+    <link rel="stylesheet" href="static/css/content.css">
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -117,6 +117,21 @@
         <p>Em constante aprendizado.</p>
         <p>&copy; 2025 - Todos os direitos reservados.</p>
       </div>
+
+    <!-- MARCAR A PÁGINA ATUAL -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const currentPage = window.location.pathname.split("/").pop();
+          const navLinks = document.querySelectorAll(".navbar .nav-link");
+
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+              link.classList.add("active");
+            }
+          });
+        });
+      </script>
     </footer>
+    
   </body>
 </html>
