@@ -12,6 +12,16 @@
   height: 100%;
 }
 
+/* SubTítulos */
+.ferramentas-titulo {
+  color: #086aeb;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
 section.content {
   background-color: #f9f9f9;
   flex: 1;
@@ -60,16 +70,6 @@ section.content {
   box-sizing: border-box;
   overflow: hidden; /* ✅ necessário para esconder o loop */
   position: relative;
-}
-
-/* Título das ferramentas */
-.ferramentas-titulo {
-  color: #086aeb;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: center;
-  font-size: 18px;
-  text-transform: uppercase;
 }
 
 /* ======= NOVO: trilha de rolagem ======= */
