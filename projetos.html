@@ -91,6 +91,8 @@
               <div class="ferramenta-box"><img src="static/imagem/logos/JavaScript.png" alt="JavaScript"><p>JavaScript</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Flask.png" alt="Flask"><p>Flask</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Vercel.png" alt="Vercel"><p>Vercel</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/aws.png" alt="AWS"><p>AWS</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/docker.png" alt="Docker"><p>Docker</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Figma.png" alt="Figma"><p>Figma</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/python-logo.png" alt="Python"><p>Python</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Pandas.png" alt="Pandas"><p>Pandas</p></div>
@@ -108,22 +110,8 @@
               <div class="ferramenta-box"><img src="static/imagem/logos/JavaScript.png" alt="JavaScript"><p>JavaScript</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Flask.png" alt="Flask"><p>Flask</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Vercel.png" alt="Vercel"><p>Vercel</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/Figma.png" alt="Figma"><p>Figma</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/python-logo.png" alt="Python"><p>Python</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/Pandas.png" alt="Pandas"><p>Pandas</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/Plotly.png" alt="Plotly"><p>Plotly</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/GitHub.png" alt="GitHub"><p>GitHub</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/Git_bash.png" alt="Git Bash"><p>Git Bash</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/Jira.png" alt="Jira"><p>Jira</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/MySQL.png" alt="MySQL"><p>MySQL</p></div>
-            </div>
-
-            <div class="ferramentas-grid">
-              <div class="ferramenta-box"><img src="static/imagem/logos/Html.png" alt="HTML5"><p>HTML5</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/CSS.png" alt="CSS"><p>CSS</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/JavaScript.png" alt="JavaScript"><p>JavaScript</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/Flask.png" alt="Flask"><p>Flask</p></div>
-              <div class="ferramenta-box"><img src="static/imagem/logos/Vercel.png" alt="Vercel"><p>Vercel</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/aws.png" alt="AWS"><p>AWS</p></div>
+              <div class="ferramenta-box"><img src="static/imagem/logos/docker.png" alt="Docker"><p>Docker</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Figma.png" alt="Figma"><p>Figma</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/python-logo.png" alt="Python"><p>Python</p></div>
               <div class="ferramenta-box"><img src="static/imagem/logos/Pandas.png" alt="Pandas"><p>Pandas</p></div>
@@ -173,5 +161,83 @@
           });
         });
       </script>
+
+      <script>
+        const track = document.querySelector('.ferramentas-track');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let autoScroll;
+        const scrollSpeed = 1;
+
+        function startAutoScroll() {
+          autoScroll = setInterval(() => {
+            track.scrollLeft += scrollSpeed;
+            if (track.scrollLeft >= track.scrollWidth / 2) {
+              track.scrollLeft = 0;
+            }
+          }, 20);
+        }
+
+        function stopAutoScroll() {
+          clearInterval(autoScroll);
+        }
+
+        startAutoScroll();
+
+        // Pausa ao passar o mouse
+        track.addEventListener('mouseenter', stopAutoScroll);
+        track.addEventListener('mouseleave', startAutoScroll);
+
+        // --- Arraste com o mouse ---
+        track.addEventListener('mousedown', (e) => {
+          isDown = true;
+          track.classList.add('active');
+          stopAutoScroll();
+          startX = e.pageX - track.offsetLeft;
+          scrollLeft = track.scrollLeft;
+        });
+
+        track.addEventListener('mouseleave', () => {
+          isDown = false;
+          track.classList.remove('active');
+          startAutoScroll();
+        });
+
+        track.addEventListener('mouseup', () => {
+          isDown = false;
+          track.classList.remove('active');
+          startAutoScroll();
+        });
+
+        track.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - track.offsetLeft;
+          const walk = (x - startX) * 2;
+          track.scrollLeft = scrollLeft - walk;
+        });
+
+        // --- Toque no celular ---
+        track.addEventListener('touchstart', (e) => {
+          isDown = true;
+          stopAutoScroll();
+          startX = e.touches[0].pageX - track.offsetLeft;
+          scrollLeft = track.scrollLeft;
+        });
+
+        track.addEventListener('touchend', () => {
+          isDown = false;
+          startAutoScroll();
+        });
+
+        track.addEventListener('touchmove', (e) => {
+          if (!isDown) return;
+          const x = e.touches[0].pageX - track.offsetLeft;
+          const walk = (x - startX) * 2;
+          track.scrollLeft = scrollLeft - walk;
+        });
+      </script>
+
   </body>
 </html>

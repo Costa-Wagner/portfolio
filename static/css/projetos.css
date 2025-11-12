@@ -72,7 +72,7 @@ section.content {
   position: relative;
 }
 
-/* ======= NOVO: trilha de rolagem ======= */
+/* ======= Trilha de rolagem ======= */
 .ferramentas-track {
   display: flex;
   width: calc(200%); /* duplicação para rolagem contínua */
@@ -82,6 +82,10 @@ section.content {
 /* pausa a rolagem ao passar o mouse */
 .ferramentas-section:hover .ferramentas-track {
   animation-play-state: paused;
+}
+
+.ferramentas-track.active {
+  cursor: grabbing;
 }
 
 /* Grid horizontal dos boxes (duplicado dentro da track) */
