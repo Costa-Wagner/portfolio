@@ -42,10 +42,6 @@ section.content {
   cursor: pointer;
 }
 
-.projeto-img:hover {
-  transform: scale(1.03);
-}
-
 .contact-box h3 {
   margin: 0;
   font-size: 15px;
