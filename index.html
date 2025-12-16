@@ -18,11 +18,6 @@
     <link rel="stylesheet" href="static/css/base.css">
     <link rel="stylesheet" href="static/css/sobre.css">
     <link rel="stylesheet" href="static/css/content.css">
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
   <body>
@@ -34,7 +29,7 @@
 
       <!-- Menu com Bootstrap -->
       <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Alternar navegação">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -43,9 +38,9 @@
             <li class="nav-item"><a class="nav-link" href="projetos.html">Projetos</a></li>
             <li class="nav-item"><a class="nav-link" href="certificados.html">Certificados</a></li>
             <li class="nav-item"><a class="nav-link" href="cv.html">C.V.</a></li>
-            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>    
+            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
           </ul>
-        </div>  
+        </div>
       </nav>
     </header>
 
@@ -54,10 +49,10 @@
       <header>
         <h2>Sobre Mim</h2>
       </header>
-      
+
       <main class="sobre-container">
         <!-- Flip Card da foto -->
-        <div class="flip-card">
+        <div class="flip-card" aria-hidden="false">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <img src="static/imagem/imagens/Wagner.Costa.jpg.jfif"
@@ -93,14 +88,14 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <div style="position:absolute; left:20px; top:50%; transform: translateY(-50%); display:flex; gap:15px; align-items:center;">
-        <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle">
+      <div class="social-icons">
+        <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle" aria-label="GitHub">
           <img src="static/imagem/logos/GitHub.png" alt="GitHub">
         </a>
-        <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="icon-circle">
+        <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="icon-circle" aria-label="LinkedIn">
           <img src="static/imagem/logos/Linkedin.jpg" alt="LinkedIn">
         </a>
-        <a href="https://wa.me/5512981056787" target="_blank" class="icon-circle">
+        <a href="https://wa.me/5512981056787" target="_blank" class="icon-circle" aria-label="WhatsApp">
           <img src="static/imagem/logos/whatsapp.png" alt="WhatsApp">
         </a>
       </div>
@@ -110,21 +105,25 @@
         <p>Em constante aprendizado.</p>
         <p>&copy; 2025 - Todos os direitos reservados.</p>
       </div>
+    </footer>
+
+    <!-- SCRIPTS: jQuery, Popper, Bootstrap (no final do body para melhor performance) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- MARCAR A PÁGINA ATUAL -->
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          const currentPage = window.location.pathname.split("/").pop();
-          const navLinks = document.querySelectorAll(".navbar .nav-link");
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll(".navbar .nav-link");
 
-          navLinks.forEach(link => {
-            if (link.getAttribute("href") === currentPage) {
-              link.classList.add("active");
-            }
-          });
+        navLinks.forEach(link => {
+          if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+          }
         });
-      </script>
-    </footer>
-    
+      });
+    </script>
   </body>
 </html>
