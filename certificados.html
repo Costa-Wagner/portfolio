@@ -83,103 +83,125 @@
 
       <!-- EVENTOS -->
       <h4 class="certificados-titulo mt-5">Participação em Eventos</h4>
-      <div class="row">
-        <div class="col-md-3 mb-4">
-          <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
-            <img src="static/imagem/imagens/OUT/evento_2.jfif" class="img-fluid projeto-img" alt="Evento"
-              onclick="abrirLightbox(this.src)">
-            <h3>Science & Business Connection</h3>
-            <h4>- PIT -</h4>
-            <h5>Out/2025</h5>
-            <p>
-              Evento no PIT <i>- Parque de Inovação Tecnológica São José dos Campos </i> da 3° edição da Science &
-              Business Connection. Um evento marcado por tecnologia, inovação e conhecimento, como a palestra da Ifood e
-              Blip que juntas trouxeram um tema extremamente atual, O Futuro do Trabalho na Era da IA. Já em outra
-              palestra, a Johson & Johson abordou os riscos relacionados à cibersegurança. Pude também prestigiar
-              diversos expositores e em especial nossa querida Fatec São José dos Campos - Prof. Jessen Vidal. É nesse
-              ambiente que nos sentimos cada vez mais motivados a estudar, aprender e descobrir os caminhos que a
-              programação e suas vertentes podem nos levar.
-            </p>
-          </div>
-        </div>
+      
+      <div class="eventos-carousel-container">
+             
+        <div class="eventos-carousel-wrapper">
+          <div class="row" id="eventosRow">
 
-        <!--IMPLANTAR E CONFIGURAR COM ROLAGEM 
-          
-          <div class="col-md-3 mb-4">
-            <div class="contact-box">
-              <img src="static/imagem/imagens/OUT/evento_2.jfif" 
-                   class="img-fluid projeto-img" 
-                   alt="Evento" 
-                   onclick="abrirLightbox(this.src)">
-              <h3>PyDay</h3>
-              <h4>- Python SJC -</h4>
-              <h5>Out/2025</h5>
-              <p>
-                Evento de Python com um conteúdo valioso, com palestras que trouxeram diferentes
-                perspectivas sobre tecnologia, inovação e aplicações reais de Python, além de muito 
-                networking e insights valiosos. O PyDay SJC reforça o propósito que nos move: colocar 
-                pessoas acima da tecnologia, fortalecer conexões e criar oportunidades por meio da troca 
-                de conhecimento. Para quem deseja fazer parte dessa jornada, convidamos a acompanhar 
-                nossas redes e entrar para a comunidade.
-              </p>
+            <div class="col-md-4 mb-4">
+              <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
+                <img src="static/imagem/imagens/DEZ/FSolucoes.jpeg " class="img-fluid projeto-img" alt="Evento"
+                  onclick="abrirLightbox(this.src)">
+                <h3>Feira de Soluções</h3>
+                <h4>- FATEC -</h4>
+                <h5>Dez/2025</h5>
+                <p>
+                  No dia 04/12, participei da XII FEIRA DE SOLUÇÕES (Fatec/SJC), apresentando junto a minha equipe JanoSys Technologies,
+                  um projeto baseado na análise dos dados do Censo 2010 e 2022.
+                  O projeto teve como objetivo criar uma dashboard interativa que facilitasse a visualização dos dados do IBGE,
+                  apoiando o cliente na tomada de decisões sobre a melhor distribuição dos recursos públicos no município.
+                  Uma experiência rica de aprendizado técnico e de trabalho em equipe.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+              <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
+                <img src="static/imagem/imagens/OUT/evento_2.jfif" class="img-fluid projeto-img" alt="Evento"
+                  onclick="abrirLightbox(this.src)">
+                <h3>Science & Business Connection</h3>
+                <h4>- PIT -</h4>
+                <h5>Out/2025</h5>
+                <p>
+                  3° edição da Science & Business Connection realizado no PIT <i>- Parque de Inovação Tecnológica SJC </i>.
+                  Um evento marcado por tecnologia, inovação e conhecimento, como a palestra da Ifood e
+                  Blip que juntas trouxeram um tema extremamente atual, O Futuro do Trabalho na Era da IA.
+                  Já a Johson & Johson abordou os riscos relacionados à cibersegurança.
+                  Pude prestigiar diversos expositores e em especial nossa querida Fatec-SJC. É nesse
+                  ambiente que nos sentimos cada vez mais motivados a estudar, aprender e descobrir os caminhos que a
+                  programação e suas vertentes podem nos levar.
+                </p>
+              </div>
+            </div>
+              
+            <div class="col-md-4 mb-4">
+              <div class="contact-box">
+                <img src="static/imagem/imagens/OUT/pyday_2.jpeg" 
+                      class="img-fluid projeto-img" 
+                      alt="Evento" 
+                      onclick="abrirLightbox(this.src)">
+                <h3>PyDay</h3>
+                <h4>- Python SJC -</h4>
+                <h5>Out/2025</h5>
+                <p>
+                  Evento de Python com palestras que trouxeram diferentes perspectivas sobre tecnologia,
+                  inovação e aplicações reais de Python, além de muito networking e insights valiosos.
+                  O PyDay SJC reforça o propósito de colocar pessoas acima da tecnologia, fortalece 
+                  conexões e cria oportunidades por meio da troca de conhecimento.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+              <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
+                <img src="static/imagem/imagens/OUT/maratona.jfif" class="img-fluid projeto-img" alt="Evento"
+                  onclick="abrirLightbox(this.src)">
+                <h3>Maratona de Programação</h3>
+                <h4>- FATEC -</h4>
+                <h5>Out/2025</h5>
+                <p>
+                  Minha 1° participação em maratona de codificação. Evento organizado pela Fatec São José dos Campos -
+                  Prof. Jessen Vidal reunindo mais de 100 competidores e cerca de 50 equipes em um
+                  desafio intenso de resolução de problemas com a linguagem Python. Foi uma experiência incrível de
+                  aprendizado, trabalho em equipe e superação, que certamente quero continuar vivenciando e fomentando ao
+                  longo da minha trajetória acadêmica e profissional. 🚀🐍 Equipe PyTrio em ação, não ganhamos bexiga 🎈 mas
+                  ganhamos experiência.
+                </p>
+
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+              <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
+                <a href="https://www.linkedin.com/company/pythonsjc/posts/?feedView=all" target="_blank"
+                  class="icon-circle"></a>
+                <img src="static/imagem/imagens/SET/python_1.jfif" class="img-fluid projeto-img" alt="Evento"
+                  onclick="abrirLightbox(this.src)">
+                <h3>PyDay</h3>
+                <h4>- Python SJC -</h4>
+                <h5>Set/2025</h5>
+                <p>
+                  Evento da Python SJC com palestras focadas nas aplicações práticas, empresas e diferentes cargos profissionais que usam a linguagem. Foi uma boa oportunidade para
+                  reforçar o vasto horizonte de como o Python é utilizado no mercado e entender melhor o perfil dos
+                  profissionais da área. Que venha o próximo evento.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+              <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
+                <img src="static/imagem/imagens/SET/evento_1.jfif" class="img-fluid projeto-img" alt="Evento"
+                  onclick="abrirLightbox(this.src)">
+                <h3>Innovation Week 2025</h3>
+                <h4>- PIT -</h4>
+                <h5>Set/2025</h5>
+                <p>
+                  Visita à Innovation Week 2025, que aconteceu no PIT <i>– Parque de Inovação Tecnológica São José dos Campos.</i>
+                  Juntamente com os colegas da Fatec São José dos Campos - Prof. Jessen Vidal e guiados pelo <i>Prof. Dr.
+                  Reinaldo Arakaki</i>, tivemos uma experiência incrível conhecendo diversas empresas do PIT e expositores, que
+                  que apresentaram ideias inovadoras e soluções que estão moldando nosso futuro.
+                  Saímos inspirados e ainda mais motivados a aprender e explorar as novas tecnologias.
+                </p>
+              </div>
             </div>
           </div>
-        -->
-
-        <div class="col-md-3 mb-4">
-          <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
-            <img src="static/imagem/imagens/OUT/maratona.jfif" class="img-fluid projeto-img" alt="Evento"
-              onclick="abrirLightbox(this.src)">
-            <h3>Maratona de Programação</h3>
-            <h4>- FATEC -</h4>
-            <h5>Out/2025</h5>
-            <p>
-              Minha 1° participação em maratona de codificação. Evento organizado pela Fatec São José dos Campos -
-              Prof. Jessen Vidal reunindo mais de 100 competidores e cerca de 50 equipes em um
-              desafio intenso de resolução de problemas com a linguagem Python. Foi uma experiência incrível de
-              aprendizado, trabalho em equipe e superação, que certamente quero continuar vivenciando e fomentando ao
-              longo da minha trajetória acadêmica e profissional. 🚀🐍 Equipe PyTrio em ação, não ganhamos bexiga 🎈 mas
-              ganhamos experiência.
-            </p>
-
-          </div>
         </div>
-
-        <div class="col-md-3 mb-4">
-          <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
-            <a href="https://www.linkedin.com/company/pythonsjc/posts/?feedView=all" target="_blank"
-              class="icon-circle"></a>
-            <img src="static/imagem/imagens/SET/python_1.jfif" class="img-fluid projeto-img" alt="Evento"
-              onclick="abrirLightbox(this.src)">
-            <h3>Evento PyDay</h3>
-            <h4>- Python SJC -</h4>
-            <h5>Set/2025</h5>
-            <p>
-              Evento da Python SJC com palestras focadas nas aplicações práticas, empresas e diferentes cargos profissionais que usam a linguagem. Foi uma boa oportunidade para
-              reforçar o vasto horizonte de como o Python é utilizado no mercado e entender melhor o perfil dos
-              profissionais da área. Que venha o próximo evento.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-3 mb-4">
-          <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
-            <img src="static/imagem/imagens/SET/evento_1.jfif" class="img-fluid projeto-img" alt="Evento"
-              onclick="abrirLightbox(this.src)">
-            <h3>Innovation Week 2025</h3>
-            <h4>- PIT -</h4>
-            <h5>Set/2025</h5>
-            <p>
-              Visita à Innovation Week 2025, que aconteceu no PIT <i>– Parque de Inovação Tecnológica São José dos Campos.</i>
-              Juntamente com os colegas da Fatec São José dos Campos - Prof. Jessen Vidal e guiados pelo <i>Prof. Dr.
-              Reinaldo Arakaki</i>, tivemos uma experiência incrível conhecendo diversas empresas do PIT e expositores, que
-              que apresentaram ideias inovadoras e soluções que estão moldando nosso futuro.
-              Saímos inspirados e ainda mais motivados a aprender e explorar as novas tecnologias.
-            </p>
-          </div>
-        </div>
+        <button class="carousel-nav-btn prev" id="prevBtn" onclick="navegarCarrossel(-1)">‹</button>
+        <button class="carousel-nav-btn next" id="nextBtn" onclick="navegarCarrossel(1)">›</button>
       </div>
     </div>
+  
   </section>
 
   <!-- LIGHTBOX -->
@@ -239,6 +261,65 @@
         }
       });
     });
+  </script>
+
+  <!-- EVENTOS - Carrossel -->
+  <script>
+  // Carrossel de Eventos
+    let posicaoAtual = 0;
+    const eventosRow = document.getElementById('eventosRow');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    function getCardsVisiveis() {
+      const largura = window.innerWidth;
+      if (largura >= 768) return 3;
+      return 1;
+    }
+
+    function getTotalCards() {
+      return eventosRow.querySelectorAll('.col-md-4').length;
+    }
+
+    function atualizarBotoes() {
+      const cardsVisiveis = getCardsVisiveis();
+      const totalCards = getTotalCards();
+      
+      prevBtn.disabled = posicaoAtual === 0;
+      nextBtn.disabled = posicaoAtual >= totalCards - cardsVisiveis;
+    }
+
+    function navegarCarrossel(direcao) {
+      const cardsVisiveis = getCardsVisiveis();
+      const totalCards = getTotalCards();
+      
+      posicaoAtual += direcao;
+      
+      if (posicaoAtual < 0) posicaoAtual = 0;
+      if (posicaoAtual > totalCards - cardsVisiveis) {
+        posicaoAtual = totalCards - cardsVisiveis;
+      }
+      
+      const deslocamento = -(posicaoAtual * (100 / cardsVisiveis));
+      eventosRow.style.transform = `translateX(${deslocamento}%)`;
+      
+      atualizarBotoes();
+    }
+
+    window.addEventListener('resize', () => {
+      posicaoAtual = 0;
+      eventosRow.style.transform = 'translateX(0)';
+      atualizarBotoes();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') navegarCarrossel(-1);
+      if (e.key === 'ArrowRight') navegarCarrossel(1);
+    });
+
+    if (eventosRow && prevBtn && nextBtn) {
+      atualizarBotoes();
+    }
   </script>
 
 </body>

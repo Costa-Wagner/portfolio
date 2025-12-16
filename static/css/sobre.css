@@ -1,26 +1,27 @@
+/* ======= SOBRE ======= */
 .sobre-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
-  padding: 10px;
   max-width: 1500px;
+  padding-left: 45px;
   margin: 0 auto;
-} 
+}
 
 section.content {
   background-color: #f9f9f9;
   flex: 1;
-  padding-left: 40px;
 }
 
+/* texto da seção sobre */
 .sobre-texto {
   flex: 1 1 60%;
   font-size: 18px;
   line-height: 1.65;
   color: #000000;
-  text-align: rig;
+  text-align: justify;
   padding-left: 5px;
   padding-right: 40px;
 }
@@ -32,11 +33,11 @@ section.content {
 
 /* Flip Card */
 .flip-card {
-  width: min(30vw, 300px); /* mantém responsivo, sem exagerar no tamanho */
+  width: min(30vw, 300px);
   aspect-ratio: 1 / 1.1;
   perspective: 1000px;
-  margin: 0 auto; /* centraliza no container */
-}
+  margin: 0 auto;
+} 
 
 .flip-card-inner {
   position: relative;
@@ -63,7 +64,7 @@ section.content {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius:25px;
+  border-radius: 25px;
 }
 
 .flip-card-back {
@@ -80,13 +81,25 @@ section.content {
 
 .flip-card-back h3 {
   margin: 5px 0;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .flip-card-back p {
   color: #ffffff !important;
   margin: 2px 0;
   font-size: 16px;
+  line-height: 2;
+}
+
+/* Estilo para os ícones sociais */
+.social-icons {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
 /* Responsividade */
@@ -106,7 +119,8 @@ section.content {
     margin-bottom: 0px;
     width: 40vw;
     max-width: 250px;
-    aspect-ratio: auto 1 / 1.1;
+    /* mantém proporção; evitando valor inválido */
+    aspect-ratio: 1 / 1.1;
   }
 }
 
