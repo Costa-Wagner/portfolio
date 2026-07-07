@@ -8,4 +8,4 @@ Allow: /
 Disallow: /node_modules/
 
 # Sitemap será adicionado quando todas as páginas estiverem prontas
-# Sitemap: https://portfolio-wagner-nu.vercel.app/sitemap.xml
+# Sitemap: https://wagner-costa.vercel.app/sitemap.xml
