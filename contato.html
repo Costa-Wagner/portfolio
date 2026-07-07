@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CONTATO · Wagner Costa</title>
+
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="node_modules/@tabler/icons-webfont/dist/tabler-icons.min.css" />
+
+  <link rel="stylesheet" href="static/css/base.css" />
+  <link rel="stylesheet" href="static/css/header.css" />
+  <link rel="stylesheet" href="static/css/footer.css" />
+  <link rel="stylesheet" href="static/css/contato.css" />
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+
+    <!-- CONTEÚDO -->
+    <section class="content">
+
+      <main class="contact-container">
+        <div class="contact-logos">
+          <!-- GitHub -->
+          <a href="https://github.com/Costa-Wagner" target="_blank" class="contact-logo contact-logo--github">
+            <i class="ti ti-brand-github"></i>
+            <img src="assets/images/qrcodes/qr_code_github.png" alt="GitHub QR" class="contact-logo-qr">
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/costa-wagner/" target="_blank" class="contact-logo contact-logo--linkedin">
+            <i class="ti ti-brand-linkedin"></i>
+            <img src="assets/images/qrcodes/qrc-linkedin.png" alt="LinkedIn QR" class="contact-logo-qr">
+          </a>    
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5512981056787" target="_blank" class="contact-logo contact-logo--whatsapp">
+            <i class="ti ti-brand-whatsapp"></i>
+            <img src="assets/images/qrcodes/qr_code_whatsapp.png" alt="GitHub QR" class="contact-logo-qr">        
+          </a>
+          
+          <!-- E-mail -->
+          <a href="mailto:wagnergcosta@hotmail.com" class="contact-logo contact-logo--email">
+            <i class="ti ti-mail"></i>
+            <img src="assets/images/qrcodes/qr_code_email.png" alt="Email QR" class="contact-logo-qr">
+          </a>
+        </div>
+
+        <div class="form-section">
+          <h2 class="form-title">ENTRE EM CONTATO</h2>
+          <form id="form-contato" class="form-contato">
+            <div class="form-group">
+              <label class="form-label" for="form-nome">NOME</label>
+              <input type="text" id="form-nome" name="nome" class="form-input" placeholder="Seu nome completo" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-email">E-MAIL</label>
+              <input type="email" id="form-email" name="email" class="form-input" placeholder="seu@email.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-mensagem">MENSAGEM</label>
+              <textarea id="form-mensagem" name="mensagem" class="form-input form-textarea" placeholder="Escreva sua mensagem aqui..." rows="5" required></textarea>
+            </div>
+
+            <div id="form-feedback" class="form-feedback"></div>
+
+            <button type="submit" class="btn btn-primary">ENVIAR MENSAGEM</button>
+          </form>
+        </div>
+      </main>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- MARCAR A PÁGINA ATUAL -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const currentPage = window.location.pathname.split("/").pop();
+          const navLinks = document.querySelectorAll(".navbar .nav-link");
+
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+              link.classList.add("active");
+            }
+          });
+        });
+      </script>
+  </body>
+</html>

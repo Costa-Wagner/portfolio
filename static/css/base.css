@@ -1,0 +1,218 @@
+/* ══════════════════════════════════════
+   base.css — Wagner Gonçalves Costa
+   Paleta aprovada: azul + off-white
+   ══════════════════════════════════════ */
+
+/* ── Variáveis globais de design ── */
+:root {
+  /* Cores principais */
+  --color-primary:      #1d4ed8; /* azul escuro — navbar, footer, onda frente */
+  --color-primary-mid:  #3b82f6; /* azul médio — onda meio */
+  --color-primary-light:#93c5fd; /* azul claro — onda fundo */
+  --color-accent:       #2563eb; /* azul destaque — botões, tags, links */
+
+  /* Superfícies */
+  --color-bg:           #f5f4f0; /* fundo off-white do conteúdo */
+  --color-card:         #ffffff; /* cards e blocos elevados */
+  --color-border:       #e2e0db; /* bordas sutis */
+
+  /* Textos */
+  --color-text:         #1a1a1a; /* texto principal */
+  --color-text-secondary: #555555; /* texto secundário */
+  --color-text-muted:   #888888; /* texto terciário / metadados */
+  --color-text-white:   #ffffff; /* texto sobre azul */
+
+  /* Tipografia */
+  --font-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-size-base: 15px;
+  --line-height-base: 1.7;
+
+  /* Espaçamentos */
+  --spacing-xs:  4px;
+  --spacing-sm:  8px;
+  --spacing-md:  16px;
+  --spacing-lg:  24px;
+  --spacing-xl:  40px;
+
+  /* Bordas */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-pill: 999px;
+
+  /* Sombras */
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.07);
+  --shadow-hover: 0 4px 16px rgba(29, 78, 216, 0.12);
+
+  /* Transições */
+  --transition: 0.25s ease;
+}
+
+/* ── Reset e base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 70px;
+}
+
+/* ── Área de conteúdo cresce para empurrar footer para baixo ── */
+main,
+section.content {
+  flex: 1;
+}
+
+/* ── Tipografia base ── */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Título de seção padrão ── */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ── Cards reutilizáveis ── */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* ── Botões reutilizáveis ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-text-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--color-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* ── Tags / badges de stack ── */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-primary-mid);
+  color: var(--color-accent);
+  background-color: var(--color-card);
+}
+
+/* ── Utilitários ── */
+.text-center { text-align: center; }
+.text-muted  { color: var(--color-text-muted); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+/* ── Responsivo base ── */
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 14px;
+  }
+}
+
+@media print {
+  html, body {
+    display: block;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+    background: white;
+  }
+}

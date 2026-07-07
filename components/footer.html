@@ -1,0 +1,55 @@
+<!-- ══════════════════════════════════════
+     _footer.html — componente reutilizável
+     Carregado via loader.js em todas as páginas.
+
+     Ícones: Tabler Icons via npm local.
+     Uso: <i class="ti ti-nome-do-icone"></i>
+     ══════════════════════════════════════ -->
+
+<!-- Onda de transição: conteúdo → footer.
+     3 caminhos SVG em tons de azul criam profundidade.
+     Ondas baixas e suaves — menos altura que a navbar. -->
+<div class="footer-wave" aria-hidden="true">
+  <svg viewBox="0 0 940 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:120px;display:block;">
+    <!-- Camada fundo — azul claro -->
+    <path d="M0,60 C180,120 360,0 540,60 C720,120 900,0 1080,60 C1260,120 1380,30 1440,60 L1440,120 L0,120 Z" fill="#93c5fd"/>
+    <!-- Camada meio — azul médio -->
+    <path d="M0,70 C200,10 400,110 600,50 C800,0 1000,100 1200,40 C1320,10 1400,80 1440,70 L1440,120 L0,120 Z" fill="#3b82f6"/>
+    <!-- Camada frente — azul escuro -->
+    <path d="M0,80 C150,30 350,120 550,65 C750,10 950,110 1150,55 C1300,20 1400,90 1440,80 L1440,120 L0,120 Z" fill="#1d4ed8"/>
+  </svg>
+</div>
+
+<footer class="footer">
+
+  <!-- Ícones sem círculo — apenas o ícone limpo.
+       aria-label descreve o destino para leitores de tela. -->
+  <div class="footer-icons">
+
+    <a href="https://github.com/Costa-Wagner"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Perfil no GitHub">
+      <i class="ti ti-brand-github"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/costa-wagner/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Perfil no LinkedIn">
+      <i class="ti ti-brand-linkedin"></i>
+    </a>
+
+    <a href="https://wa.me/5512981056787"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Contato pelo WhatsApp">
+      <i class="ti ti-brand-whatsapp"></i>
+    </a>
+
+  </div>
+
+  <p class="footer-tagline">Aprendendo · Construindo · Evoluindo</p>
+  <p class="footer-copy">© <span id="ano"></span> · WGCosta</p>
+
+</footer>

@@ -1,0 +1,11 @@
+# robots.txt — Wagner Costa Portfolio
+# Permite que todos os crawlers indexem o site.
+# Apenas a pasta node_modules é bloqueada — não é conteúdo público.
+
+User-agent: *
+Allow: /
+
+Disallow: /node_modules/
+
+# Sitemap será adicionado quando todas as páginas estiverem prontas
+# Sitemap: https://portfolio-wagner-nu.vercel.app/sitemap.xml

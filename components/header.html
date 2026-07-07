@@ -1,0 +1,77 @@
+<!-- ══════════════════════════════════════
+     _header.html — componente reutilizável
+     Carregado via loader.js em todas as páginas.
+
+     O atributo data-page em cada <a> é usado pelo
+     loader.js para detectar a página atual e aplicar
+     a classe "active" automaticamente — sem edição manual.
+     ══════════════════════════════════════ -->
+
+<div class="header-fixed">
+  <header class="hero">
+    <h1>Wagner Costa</h1>
+
+    <!-- navbar-expand-md: menu horizontal em telas ≥ 768px,
+        colapsado (hambúrguer) em telas menores -->
+    <nav class="navbar navbar-expand-md">
+
+      <!-- Botão hambúrguer — visível apenas em mobile.
+          data-bs-target aponta para o id do menu colapsável. -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu"
+        aria-expanded="false"
+        aria-label="Abrir menu de navegação"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu colapsável.
+          ms-auto empurra os links para a direita (Bootstrap). -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto">
+
+          <!-- data-page deve bater com o nome do arquivo HTML sem extensão.
+              O loader.js lê a URL e adiciona "active" no link correto. -->
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" data-page="index">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="projetos.html" data-page="projetos">Projetos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="expertise.html" data-page="expertise">Expertise</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="eventos.html" data-page="eventos">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cv.html" data-page="cv">C.V.</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contato.html" data-page="contato">Contato</a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Onda de transição: navbar → conteúdo.
+      O fundo do <div> é var(--color-bg) para evitar
+      gaps nas laterais em telas muito largas.
+      As 3 camadas de path criam profundidade com opacidades diferentes. -->
+  <div class="header-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <!-- Camada fundo — azul claro -->
+      <path d="M0,0 C60,100 1080,0 1440,55 L1440,0 Z" fill="#93c5fd"/>
+      <!-- Camada meio — azul médio -->
+      <path d="M0,0 C480,60 960,5 1440,42 L1440,0 Z" fill="#3b82f6"/>
+      <!-- Camada frente — azul escuro, mesma cor da navbar -->
+      <path d="M0,40 C180,45 320,5 700,18 C980,30 1200,12 1440,20 L1440,0 L0,0 Z" fill="#1d4ed8"/>
+    </svg>
+  </div>
+</div>

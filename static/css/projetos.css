@@ -1,0 +1,894 @@
+/* ══════════════════════════════════════
+   projetos.css — Wagner Gonçalves Costa
+   Timeline horizontal (desktop) / vertical (mobile)
+   ══════════════════════════════════════ */
+
+/* ── Área de conteúdo da seção ── */
+.content {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ══════════════════════════════════════
+   CABEÇALHO: tabs + info da categoria
+   ══════════════════════════════════════ */
+
+.proj-cabecalho {
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Tabs de categoria ── */
+.proj-tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.proj-tab {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 6px 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.proj-tab:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.proj-tab.ativo {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-white);
+}
+
+/* ── Texto informativo da categoria — propositalmente discreto:
+   recrutador lê se quiser, mas não compete com os cards ── */
+.proj-cat-info {
+  padding: var(--spacing-xs) 0 var(--spacing-md) 0;
+  min-height: 115px;
+}
+
+.proj-cat-info-titulo {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.proj-cat-info-texto {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 600px;
+  text-align: justify;
+}
+
+/* ══════════════════════════════════════
+   ÁREA PRINCIPAL: timeline + painel
+   ══════════════════════════════════════ */
+
+.proj-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  transition: grid-template-columns var(--transition);
+}
+
+.proj-area-esquerda {
+  min-width: 0; /* evita overflow em grid */
+  overflow-x: auto;
+}
+
+/* ── Painéis de categoria — só um visível por vez ── */
+.proj-painel {
+  display: none;
+}
+.proj-painel.ativo {
+  display: block;
+}
+
+.proj-vazio {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+/* ══════════════════════════════════════
+   TIMELINE HORIZONTAL (desktop)
+
+   Estrutura:
+   .proj-timeline
+     .proj-timeline-linha      ← linha horizontal central (pseudo-elem)
+     .proj-periodo-grupo       ← um por período (coluna na timeline)
+       .proj-periodo-marco     ← marcador + label do período
+         .proj-periodo-dot     ← ponto na linha
+         .proj-periodo-label   ← texto do período
+       .proj-cards             ← cards acima e abaixo da linha
+         .proj-card--cima      ← acima da linha
+         .proj-card--baixo     ← abaixo da linha
+   ══════════════════════════════════════ */
+
+.proj-carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--spacing-lg) 50px;
+}
+
+.proj-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.proj-arrow:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.proj-arrow-left { left: 0; }
+.proj-arrow-right { right: 0; }
+
+.proj-cards-track {
+  display: flex;
+  gap: var(--spacing-lg);
+  transition: transform 0.35s ease;
+}
+
+.proj-card {
+  flex-shrink: 0;
+  width: 240px;
+  height: 230px;
+  overflow: hidden;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  opacity: 0.5;
+  transform: scale(0.92);
+  transition: box-shadow var(--transition), transform var(--transition), opacity var(--transition), border-color var(--transition);
+  text-align: left;
+}
+
+.proj-card.centro {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-primary-mid);
+}
+
+.proj-card.ativo {
+  border-color: var(--color-accent);
+}
+
+.proj-card-nome {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.proj-card-subtitulo {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+
+.proj-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.proj-card-semestre,
+.proj-card-funcao {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+}
+
+.proj-card-semestre {
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.proj-card-funcao {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-mid);
+}
+
+.proj-card-descricao {
+  font-size: 0.78rem;
+  text-align: justify;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.proj-card-btn {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.proj-card-btn .ti {
+  font-size: 0.8rem;
+  transition: transform var(--transition);
+}
+
+.proj-card:hover .proj-card-btn .ti {
+  transform: translateX(3px);
+}
+
+.proj-timeline-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-lg) 0 var(--spacing-sm);
+}
+
+.proj-tl-linha {
+  position: absolute;
+  top: 44.5%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: var(--color-primary-light);
+  transform: translateY(-50%);
+}
+
+.proj-tl-periodos {
+  position: relative;
+  display: flex;
+  gap: var(--spacing-xl);
+  z-index: 1;
+  transition: transform 0.35s ease;
+}
+
+.proj-tl-periodo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.proj-tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 0 1.5px var(--color-primary-light);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.proj-tl-periodo.ativo .proj-tl-dot {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.proj-tl-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.proj-tl-periodo.ativo .proj-tl-label {
+  color: var(--color-accent);
+}
+
+.proj-nav-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: var(--spacing-sm);
+}
+
+.proj-nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: all var(--transition);
+}
+
+.proj-nav-dot.ativo {
+  background: var(--color-accent);
+  width: 18px;
+  border-radius: var(--radius-pill);
+}
+
+/* ══════════════════════════════════════
+   PAINEL LATERAL DE DETALHES
+   ══════════════════════════════════════ */
+
+.proj-painel-lateral {
+  display: none;
+  position: fixed;
+  top: 110px;
+  left: 50%;
+  transform: translate(-50%);
+  width: min(95vw, 1000px);
+  flex-direction: column;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hover);
+  z-index: 300;
+
+  /* O modal nunca ultrapassa a tela: altura travada ao viewport,
+     com uma margem de respiro embaixo. O cabeçalho fica fixo
+     (flex-shrink: 0) e só o corpo rola, se o conteúdo do projeto
+     for mais longo que o espaço disponível. */
+  max-height: calc(100vh - 140px);
+  overflow: hidden;
+}
+
+/* ── Modal do painel ── */
+
+.proj-painel-lateral.aberto {
+  display: flex;
+}
+
+.proj-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 299;
+}
+
+.proj-backdrop.aberto {
+  display: block;
+}
+
+/* ── Header do painel ── */
+.proj-modal-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-primary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: flex;
+  gap: var(--spacing-md);
+  position: relative;
+  flex-shrink: 0; /* nunca encolhe — fica sempre visível no topo */
+}
+
+.proj-modal-header-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.proj-modal-fechar {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-md);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-white);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition);
+  font-size: 0.9rem;
+}
+
+.proj-modal-fechar:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.proj-modal-meta {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2px;
+}
+
+.proj-modal-nome {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+  margin-bottom: 1px;
+}
+
+.proj-modal-subtitulo {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Badges: função + tecnologias no header */
+.proj-modal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.proj-modal-badge {
+  font-size: 0.65rem;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.15);
+  color: var(--color-text-white);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* Badge de função — destaque maior */
+.proj-modal-badge--funcao {
+  background: rgba(255,255,255,0.3);
+  font-weight: 600;
+}
+
+/* Coluna direita do header: empresa + metodologia */
+.proj-modal-contexto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  justify-content: center;
+  min-width: 100px;
+  text-align: right;
+}
+
+.proj-modal-ctx-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.6);
+}
+
+.proj-modal-ctx-valor {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-white);
+}
+
+/* ── Corpo do painel ── */
+.proj-modal-corpo {
+  padding: var(--spacing-lg);
+  flex: 1;
+  min-height: 0; /* essencial: permite que o flex item encolha e role,
+                    em vez de forçar a altura do conteúdo pro pai */
+  overflow-y: auto;
+  display: grid;
+  /* 2/3 conteúdo textual + 1/3 recursos e ações */
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-lg);
+  align-content: start;
+}
+
+/* Coluna esquerda — seções textuais com espaçamento entre elas */
+.proj-modal-col-texto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Coluna direita — recursos empilhados */
+.proj-modal-col-recursos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--spacing-lg);
+}
+
+/* Imagem ocupa largura total da coluna direita */
+.proj-modal-img-box img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  transition: opacity var(--transition);
+}
+
+/* Botões empilhados na coluna direita */
+.proj-modal-links {
+  display: flex;
+  flex-direction: row;  /* botões na mesma linha */
+  gap: var(--spacing-sm);
+  margin-top: 0;
+}
+
+.proj-modal-links .btn {
+  flex: 1; /* divide o espaço igualmente entre os dois */
+  font-size: 0.75rem; /* menor que o padrão */
+  padding: 5px 10px;
+  justify-content: center;
+}
+
+.proj-modal-problema-solucao {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: var(--spacing-md);
+  width: 100%;
+  /* força o grid a se comportar como bloco independente do flex pai */
+  align-self: stretch;
+  min-width: 0;
+}
+
+/* garante que os filhos do grid não colapsam */
+.proj-modal-problema-solucao > .proj-modal-secao {
+  min-width: 0;
+  word-break: break-word;
+}
+
+.proj-modal-secao {
+  margin-bottom: var(--spacing-md);
+}
+
+.proj-modal-secao-titulo {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.proj-modal-secao p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  text-align: justify;
+}
+
+.proj-modal-divider {
+  border-color: var(--color-border);
+  margin: var(--spacing-md) 0;
+  display: none;
+}
+
+/* Ocupa as duas colunas — seções que precisam de largura total.
+   Importante: ">" (filho direto) evita que ":first-child" pegue
+   também o bloco "Problema", que é o primeiro filho dentro do seu
+   próprio contêiner (.proj-modal-problema-solucao) — sem o ">",
+   essa regra empurrava "Solução" para a linha de baixo. */
+.proj-modal-col-texto > .proj-modal-secao:first-child,
+#modalAtuacaoBloco,
+.proj-modal-rodape,
+.proj-modal-links {
+  grid-column: 1 / -1;
+}
+
+/* Rodapé: stack + imagem lado a lado */
+.proj-modal-rodape {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+}
+
+.proj-modal-secao-stack {
+  flex: 1;
+}
+
+.proj-modal-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* Thumbnail da imagem no painel */
+.proj-modal-img-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.proj-modal-img-box img {
+  width: 90px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  transition: opacity var(--transition);
+}
+
+.proj-modal-img-box:hover img {
+  opacity: 0.85;
+}
+
+.proj-modal-img-label {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Links / botões de ação no final do painel */
+.proj-modal-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-md);
+}
+
+.proj-modal-galeria-item--video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  cursor: default; /* controls nativos já tratam interação */
+}
+
+/* ══════════════════════════════════════
+   LIGHTBOX
+   ══════════════════════════════════════ */
+
+.proj-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.proj-lightbox.aberto {
+  display: flex;
+}
+
+.proj-lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.proj-lightbox-fechar {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.proj-lightbox-fechar:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════════════════════
+   REALOCAR EM POSIÇÃO CORRETA
+   ════════════════════════════════════════════════════════════════════════════════════════════ */
+.proj-modal-galeria {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.proj-modal-galeria-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  width: 90px;
+  height: 90px;
+}
+
+.proj-modal-galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.proj-modal-galeria-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.proj-modal-galeria-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+/* fundo fumê nos dois modais */
+.proj-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.proj-lightbox.aberto { display: flex; }
+
+.proj-lightbox-nav {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-lg);
+  pointer-events: none;
+}
+
+.proj-lightbox-nav button {
+  pointer-events: auto;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.proj-lightbox-contador {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+}
+
+.proj-video-modal-wrap {
+  width: min(90vw, 960px);
+  aspect-ratio: 16 / 9;
+}
+
+.proj-video-modal-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+/* ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════
+   RESPONSIVO
+   ══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  .content {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  /* ── Painel lateral vira modal full-width no mobile ── */
+  .proj-area.painel-aberto {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-painel-lateral {
+    position: fixed;
+    inset: 0;
+    top: 70px; /* abaixo da navbar */
+    /* max-height: none é inofensivo aqui — a altura já fica travada
+       pelas bordas opostas (inset:0 + top:70px = 100vh - 70px).
+       overflow:hidden e o scroll do corpo continuam herdados da
+       regra base acima. */
+    max-height: none;
+    border-radius: 0;
+    z-index: 200;
+  }
+
+  .proj-periodo-label {
+    margin-top: 0;
+  }
+
+  .proj-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .proj-carousel-wrap {
+    padding: var(--spacing-md) 40px;
+  }
+
+  .proj-card {
+    width: 200px;
+  }
+
+  .proj-modal-corpo {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-modal-col-recursos {
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-left: 0;
+    padding-top: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .proj-tabs {
+    flex-wrap: wrap;
+  }
+
+  .proj-modal-rodape {
+    flex-direction: column;
+  }
+
+  .proj-modal-img-box img {
+    width: 100%;
+    height: 120px;
+  }
+
+  .proj-modal-problema-solucao {
+    grid-template-columns: 1fr;
+  }
+}

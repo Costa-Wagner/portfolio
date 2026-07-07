@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wagner Costa — Participações em maratonas de programação, feiras de soluções e eventos da comunidade tech." />
+
+  <title>EVENTOS · Wagner Costa</title>
+
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="node_modules/@tabler/icons-webfont/dist/tabler-icons.min.css" />
+
+  <link rel="stylesheet" href="static/css/base.css" />
+  <link rel="stylesheet" href="static/css/header.css" />
+  <link rel="stylesheet" href="static/css/footer.css" />
+  <link rel="stylesheet" href="static/css/eventos.css" />
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="content">
+
+      <!-- ── CABEÇALHO ─────────────────────────────────────────────
+           Título padrão da página + linha de contexto, no mesmo
+           espírito do bloco explicativo usado em projetos.html.
+           ────────────────────────────────────────────────────── -->
+      <div class="eventos-cabecalho">
+        <p class="eventos-subtitulo">
+          Participações em maratonas de programação, feiras de soluções
+          e encontros da comunidade tech.
+        </p>
+      </div>
+
+      <!-- ── ATALHO POR ANO ────────────────────────────────────────
+           Pílulas que pulam direto pro primeiro evento do ano
+           clicado — evita clicar seta por seta conforme a lista
+           de eventos cresce a cada semestre.
+           ────────────────────────────────────────────────────── -->
+      <div class="eventos-anos-nav" id="eventosAnosNav"></div>
+
+      <!-- ── CARROSSEL ─────────────────────────────────────────────
+           Setas ficam FORA da área de corte (eventos-carousel-wrap),
+           como itens flex com espaço próprio — assim nunca ficam
+           por cima dos cards, mesmo quando o card ocupa quase toda
+           a largura do conteúdo.
+           ────────────────────────────────────────────────────── -->
+      <div class="eventos-carousel-outer">
+        <button class="eventos-arrow eventos-arrow-left" id="eventosPrev" aria-label="Evento anterior">
+          <i class="ti ti-chevron-left"></i>
+        </button>
+
+        <div class="eventos-carousel-wrap" id="eventosCarouselWrap">
+          <div class="eventos-track" id="eventosTrack"></div>
+        </div>
+
+        <button class="eventos-arrow eventos-arrow-right" id="eventosNext" aria-label="Próximo evento">
+          <i class="ti ti-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="eventos-nav-dots" id="eventosDots"></div>
+
+    </section>
+  </main>
+
+  <!-- LIGHTBOX — amplia a imagem do evento; setas só aparecem
+       quando o evento tem mais de uma imagem (controladas via JS).
+       Tudo dentro de .eventos-lightbox-caixa para que título, ×,
+       imagem e contador fiquem sempre agrupados/colados entre si,
+       independente do tamanho da imagem ou da tela. -->
+  <div id="eventos-lightbox" class="eventos-lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+    <div class="eventos-lightbox-caixa">
+
+      <div class="eventos-lightbox-header">
+        <div class="eventos-lightbox-titulo" id="lightboxTitulo"></div>
+        <button class="eventos-lightbox-fechar" onclick="fecharLightboxEvento()" aria-label="Fechar imagem">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+
+      <div class="eventos-lightbox-corpo">
+        <button class="eventos-lightbox-seta eventos-lightbox-anterior" id="lightboxAnteriorBtn" aria-label="Imagem anterior">
+          <i class="ti ti-chevron-left"></i>
+        </button>
+
+        <img id="eventos-lightbox-img" src="" alt="Imagem do evento ampliada" />
+
+        <button class="eventos-lightbox-seta eventos-lightbox-proxima" id="lightboxProximaBtn" aria-label="Próxima imagem">
+          <i class="ti ti-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="eventos-lightbox-contador" id="lightboxContador"></div>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/eventos-data.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+  /* ══════════════════════════════════════════════════════════════════
+     eventos.html — lógica de UI
+     Depende de: eventos-data.js (eventosData, getEventosOrdenados,
+                 getPorSlugEvento)
+  ══════════════════════════════════════════════════════════════════ */
+
+  /* ── Lightbox ───────────────────────────────────────────────────── */
+  var lightboxImagens = [];
+  var lightboxIndex   = 0;
+  var lightboxNome    = '';
+
+  function abrirLightboxEvento(imagens, indiceInicial, nomeEvento) {
+    lightboxImagens = imagens;
+    lightboxIndex    = indiceInicial || 0;
+    lightboxNome     = nomeEvento || '';
+    atualizarLightboxImg();
+    document.getElementById('eventos-lightbox').classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function atualizarLightboxImg() {
+    document.getElementById('eventos-lightbox-img').src = lightboxImagens[lightboxIndex];
+
+    const temVarias = lightboxImagens.length > 1;
+    document.getElementById('lightboxAnteriorBtn').style.display = temVarias ? 'flex' : 'none';
+    document.getElementById('lightboxProximaBtn').style.display  = temVarias ? 'flex' : 'none';
+
+    document.getElementById('lightboxTitulo').textContent = lightboxNome;
+
+    const contador = document.getElementById('lightboxContador');
+    contador.textContent = temVarias ? (lightboxIndex + 1) + ' / ' + lightboxImagens.length : '';
+  }
+
+  function lightboxImagemAnterior() {
+    lightboxIndex = (lightboxIndex - 1 + lightboxImagens.length) % lightboxImagens.length;
+    atualizarLightboxImg();
+  }
+
+  function lightboxProximaImagem() {
+    lightboxIndex = (lightboxIndex + 1) % lightboxImagens.length;
+    atualizarLightboxImg();
+  }
+
+  function fecharLightboxEvento() {
+    document.getElementById('eventos-lightbox').classList.remove('aberto');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lightboxAnteriorBtn').addEventListener('click', lightboxImagemAnterior);
+  document.getElementById('lightboxProximaBtn').addEventListener('click', lightboxProximaImagem);
+
+  document.getElementById('eventos-lightbox').addEventListener('click', function (e) {
+    if (e.target === this) fecharLightboxEvento();
+  });
+
+  /* Setas do teclado: se o lightbox estiver aberto, navegam entre
+     as imagens do evento; senão, seguem controlando o carrossel
+     (lógica de carrossel registrada mais abaixo, no DOMContentLoaded) */
+  document.addEventListener('keydown', function (e) {
+    const lightboxAberto = document.getElementById('eventos-lightbox').classList.contains('aberto');
+    if (e.key === 'Escape') { fecharLightboxEvento(); return; }
+    if (lightboxAberto) {
+      if (e.key === 'ArrowLeft')  lightboxImagemAnterior();
+      if (e.key === 'ArrowRight') lightboxProximaImagem();
+    }
+  });
+
+  /* ── App principal ───────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const track     = document.getElementById('eventosTrack');
+    const dotsWrap  = document.getElementById('eventosDots');
+    const btnPrev   = document.getElementById('eventosPrev');
+    const btnNext   = document.getElementById('eventosNext');
+    const anosWrap  = document.getElementById('eventosAnosNav');
+
+    const eventos = getEventosOrdenados();
+
+    /* Ano de um evento, derivado de "ordenacao" (ex: 202606 → 2026) */
+    function anoDoEvento(ev) {
+      return Math.floor(ev.ordenacao / 100);
+    }
+
+    /* ── Cria um card de evento ── */
+    function criarCardEvento(ev) {
+      const card = document.createElement('div');
+      card.className = 'evento-card';
+      card.dataset.slug = ev.slug;
+
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'evento-card-img';
+      imgWrap.setAttribute('role', 'button');
+      imgWrap.setAttribute('tabindex', '0');
+      imgWrap.setAttribute('aria-label', 'Ampliar imagem — ' + ev.nome);
+
+      const img = document.createElement('img');
+      img.src = ev.imagens[0];
+      img.alt = 'Foto do evento — ' + ev.nome;
+      imgWrap.appendChild(img);
+
+      /* Indicador de galeria — só aparece quando há mais de 1 foto,
+         sinalizando que dá pra navegar entre elas no lightbox */
+      if (ev.imagens.length > 1) {
+        const galeriaTag = document.createElement('span');
+        galeriaTag.className = 'evento-card-galeria-tag';
+        galeriaTag.innerHTML = '<i class="ti ti-photo"></i> ' + ev.imagens.length;
+        imgWrap.appendChild(galeriaTag);
+      }
+
+      imgWrap.addEventListener('click', function () { abrirLightboxEvento(ev.imagens, 0, ev.nome); });
+      imgWrap.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirLightboxEvento(ev.imagens, 0, ev.nome); }
+      });
+
+      const corpo = document.createElement('div');
+      corpo.className = 'evento-card-corpo';
+      corpo.innerHTML =
+        '<div class="evento-card-linha-topo">' +
+          '<span class="evento-card-nome">' + ev.nome + '</span>' +
+          '<span class="evento-card-periodo">' + ev.periodo + '</span>' +
+        '</div>' +
+        '<div class="evento-card-instituicao">' + ev.instituicao + '</div>' +
+        '<p class="evento-card-descricao">' + ev.descricao + '</p>';
+
+      card.appendChild(imgWrap);
+      card.appendChild(corpo);
+      return card;
+    }
+
+    eventos.forEach(function (ev) {
+      track.appendChild(criarCardEvento(ev));
+    });
+
+    /* ── Pílulas de atalho por ano — só faz sentido exibir se
+       houver mais de um ano no conjunto de eventos ── */
+    const anosUnicos = eventos
+      .map(anoDoEvento)
+      .filter(function (ano, idx, arr) { return arr.indexOf(ano) === idx; });
+
+    const anoPills = [];
+    if (anosUnicos.length > 1) {
+      anosUnicos.forEach(function (ano) {
+        const pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'eventos-ano-pill';
+        pill.textContent = ano;
+        pill.addEventListener('click', function () { pularParaAno(ano); });
+        anosWrap.appendChild(pill);
+        anoPills.push({ ano: ano, el: pill });
+      });
+    }
+
+    function pularParaAno(ano) {
+      const idx = eventos.findIndex(function (ev) { return anoDoEvento(ev) === ano; });
+      if (idx === -1) return;
+      posicao = Math.min(idx, getMaxPosicao());
+      atualizarCarrossel();
+    }
+
+    /* ── Lógica do carrossel — quantos cards visíveis por breakpoint ── */
+    let posicao = 0;
+
+    function getCardsVisiveis() {
+      const largura = window.innerWidth;
+      if (largura >= 992) return 3;
+      if (largura >= 600) return 2;
+      return 1;
+    }
+
+    function getMaxPosicao() {
+      const total = track.children.length;
+      return Math.max(0, total - getCardsVisiveis());
+    }
+
+    function atualizarDots() {
+      dotsWrap.innerHTML = '';
+      const maxPosicao = getMaxPosicao();
+      for (let i = 0; i <= maxPosicao; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'evento-nav-dot' + (i === posicao ? ' ativo' : '');
+        dotsWrap.appendChild(dot);
+      }
+    }
+
+    /* Calcula o deslocamento exato em pixels: largura real do card
+       renderizado + gap entre cards. Usar pixels reais (em vez de
+       porcentagem do container) evita o desalinhamento acumulado
+       que ocorria antes, já que a porcentagem não refletia com
+       precisão o espaço ocupado pelo gap entre os cards. */
+    function getPassoPx() {
+      const primeiroCard = track.children[0];
+      if (!primeiroCard) return 0;
+      const largura = primeiroCard.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      return largura + gap;
+    }
+
+    function atualizarCarrossel() {
+      const maxPosicao = getMaxPosicao();
+      posicao = Math.min(posicao, maxPosicao);
+
+      const passo = getPassoPx();
+      track.style.transform = 'translateX(' + (-(posicao * passo)) + 'px)';
+
+      btnPrev.disabled = posicao === 0;
+      btnNext.disabled = posicao >= maxPosicao;
+      atualizarDots();
+
+      /* Destaca a pílula do ano correspondente ao card visível
+         mais à esquerda no momento */
+      if (anoPills.length) {
+        const anoAtivo = anoDoEvento(eventos[posicao]);
+        anoPills.forEach(function (p) {
+          p.el.classList.toggle('ativo', p.ano === anoAtivo);
+        });
+      }
+    }
+
+    btnPrev.addEventListener('click', function () {
+      posicao = Math.max(0, posicao - 1);
+      atualizarCarrossel();
+    });
+    btnNext.addEventListener('click', function () {
+      posicao = Math.min(getMaxPosicao(), posicao + 1);
+      atualizarCarrossel();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      const lightboxAberto = document.getElementById('eventos-lightbox').classList.contains('aberto');
+      if (lightboxAberto) return; /* navegação de imagens já tratada no bloco do lightbox */
+      if (e.key === 'ArrowLeft')  btnPrev.click();
+      if (e.key === 'ArrowRight') btnNext.click();
+    });
+
+    window.addEventListener('resize', atualizarCarrossel);
+
+    atualizarCarrossel();
+  }); // DOMContentLoaded
+  </script>
+
+</body>
+</html>

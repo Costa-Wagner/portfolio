@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wagner Costa — Projetos desenvolvidos no curso de DSM · FATEC/SJC e iniciativas pessoais." />
+  
+  <title>PROJETOS · Wagner Costa</title>
+
+
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="node_modules/@tabler/icons-webfont/dist/tabler-icons.min.css" />
+
+  <link rel="stylesheet" href="static/css/base.css" />
+  <link rel="stylesheet" href="static/css/header.css" />
+  <link rel="stylesheet" href="static/css/footer.css" />
+  <link rel="stylesheet" href="static/css/projetos.css" />
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="content">
+
+      <!-- ── CABEÇALHO COM TABS ────────────────────────────────────
+           Tabs selecionam a categoria. O texto informativo abaixo
+           contextualiza a metodologia (ex: o que é API/FATEC).
+           ────────────────────────────────────────────────────── -->
+      <div class="proj-cabecalho">
+        <div class="proj-tabs" role="tablist">
+          <button class="proj-tab ativo" data-categoria="api"       role="tab">API · Integrador</button>
+          <button class="proj-tab"       data-categoria="academico" role="tab">Acadêmico</button>
+          <button class="proj-tab"       data-categoria="pessoal"   role="tab">Pessoal</button>
+        </div>
+
+        <!-- Texto explicativo da categoria ativa -->
+        <div class="proj-cat-info" id="projCatInfo">
+          <div class="proj-cat-info-titulo" id="catInfoTitulo"></div>
+          <p class="proj-cat-info-texto"    id="catInfoTexto"></p>
+        </div>
+      </div>
+
+      <!-- ── ÁREA PRINCIPAL: timeline + painel de detalhes ── -->
+      <div class="proj-area" id="projArea">
+
+        <!-- Coluna da timeline — ocupa toda a largura quando painel fechado -->
+        <div class="proj-area-esquerda">
+          <div id="proj-paineis"></div>
+        </div>
+
+        <!-- Painel lateral de detalhes — desliza da direita ao clicar num card -->
+        <aside class="proj-painel-lateral" id="projPainelLateral" aria-label="Detalhes do projeto">
+
+          <div class="proj-modal-header">
+            <button class="proj-modal-fechar" id="projPainelFechar" aria-label="Fechar painel">
+              <i class="ti ti-x"></i>
+            </button>
+
+            <div class="proj-modal-header-main">
+              <div class="proj-modal-meta"      id="modalMeta"></div>
+              <div class="proj-modal-nome"      id="modalNome"></div>
+              <div class="proj-modal-subtitulo" id="modalSubtitulo"></div>
+              <div class="proj-modal-badges"    id="modalBadges"></div>
+            </div>
+
+            <!-- Empresa parceira + metodologia, quando existirem -->
+            <div class="proj-modal-contexto" id="modalContexto"></div>
+          </div>
+
+          <div class="proj-modal-corpo">
+
+            <!-- ── Coluna esquerda — conteúdo textual ── -->
+            <div class="proj-modal-col-texto">
+
+              <div class="proj-modal-secao">
+                <div class="proj-modal-secao-titulo">Sobre o projeto</div>
+                <p id="modalDescricao"></p>
+              </div>
+
+              <!-- Problema e Solução lado a lado -->
+              <div class="proj-modal-problema-solucao">
+                <div class="proj-modal-secao">
+                  <div class="proj-modal-secao-titulo">Problema</div>
+                  <p id="modalProblema"></p>
+                </div>
+
+                <div class="proj-modal-secao">
+                  <div class="proj-modal-secao-titulo">Solução</div>
+                  <p id="modalSolucao"></p>
+                </div>
+              </div>
+
+              <div class="proj-modal-secao" id="modalAtuacaoBloco">
+                <div class="proj-modal-secao-titulo">Minha atuação</div>
+                <p id="modalAtuacao"></p>
+              </div>
+
+            </div>
+
+            <!-- ── Coluna direita — recursos e ações ── -->
+            <div class="proj-modal-col-recursos">
+
+              <!-- Tecnologias -->
+              <div class="proj-modal-secao">
+                <div class="proj-modal-secao-titulo">Tecnologias</div>
+                <div class="proj-modal-stack" id="modalStack"></div>
+              </div>
+
+              <!-- Galeria de imagens — miniaturas que abrem no lightbox -->
+              <div class="proj-modal-secao" id="modalGaleriaBloco">
+                <div class="proj-modal-secao-titulo">Imagens</div>
+                <div class="proj-modal-galeria" id="modalGaleria"></div>
+              </div>
+
+              <!-- Botões de ação -->
+              <div class="proj-modal-links" id="modalLinks"></div>
+
+            </div>
+
+          </div>
+        </aside>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- LIGHTBOX — amplia a imagem do projeto, com navegação entre múltiplas imagens -->
+  <div id="proj-lightbox" class="proj-lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+    <button class="proj-lightbox-fechar" onclick="fecharLightbox()" aria-label="Fechar imagem">
+      <i class="ti ti-x"></i>
+    </button>
+    <div class="proj-lightbox-nav">
+      <button onclick="lightboxAnterior()" aria-label="Imagem anterior"><i class="ti ti-chevron-left"></i></button>
+      <button onclick="lightboxProximo()" aria-label="Próxima imagem"><i class="ti ti-chevron-right"></i></button>
+    </div>
+    <img id="proj-lightbox-img" src="" alt="Imagem do projeto ampliada" />
+    <div id="proj-lightbox-contador" class="proj-lightbox-contador"></div>
+  </div>
+
+  <!-- MODAL DE VÍDEO — separado do lightbox de imagens, mesmo fundo fumê -->
+  <div id="proj-video-modal" class="proj-lightbox" role="dialog" aria-modal="true" aria-label="Vídeo do projeto">
+    <button class="proj-lightbox-fechar" onclick="fecharVideoModal()" aria-label="Fechar vídeo">
+      <i class="ti ti-x"></i>
+    </button>
+    <div class="proj-video-modal-wrap">
+      <iframe id="proj-video-modal-iframe" src="" frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="proj-backdrop" id="projBackdrop"></div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/projetos-data.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+  /* ══════════════════════════════════════════════════════════════════
+     projetos.html — lógica de UI
+     Depende de: projetos-data.js (categoriaInfo, getPorCategoria,
+                 getPeriodosOrdenados, getPorSlug)
+  ══════════════════════════════════════════════════════════════════ */
+
+  /* ── Lightbox de imagens — suporta galeria com navegação ─────────── */
+  let galeriaAtual  = [];
+  let indiceGaleria = 0;
+
+  function abrirLightbox(imagens, indiceInicial) {
+    galeriaAtual  = imagens;
+    indiceGaleria = indiceInicial || 0;
+    renderLightbox();
+    document.getElementById('proj-lightbox').classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function renderLightbox() {
+    document.getElementById('proj-lightbox-img').src = galeriaAtual[indiceGaleria];
+    document.getElementById('proj-lightbox-contador').textContent =
+      (indiceGaleria + 1) + ' / ' + galeriaAtual.length;
+    document.querySelector('.proj-lightbox-nav').style.display =
+      galeriaAtual.length > 1 ? 'flex' : 'none';
+  }
+
+  function lightboxProximo() {
+    indiceGaleria = (indiceGaleria + 1) % galeriaAtual.length;
+    renderLightbox();
+  }
+
+  function lightboxAnterior() {
+    indiceGaleria = (indiceGaleria - 1 + galeriaAtual.length) % galeriaAtual.length;
+    renderLightbox();
+  }
+
+  function fecharLightbox() {
+    document.getElementById('proj-lightbox').classList.remove('aberto');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('proj-lightbox').addEventListener('click', function(e) {
+    if (e.target === this) fecharLightbox();
+  });
+
+  /* ── Modal de vídeo — separado do lightbox de imagens ────────────── */
+  function abrirVideoModal(url) {
+    document.getElementById('proj-video-modal-iframe').src = url;
+    document.getElementById('proj-video-modal').classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharVideoModal() {
+    document.getElementById('proj-video-modal').classList.remove('aberto');
+    document.getElementById('proj-video-modal-iframe').src = ''; // para o vídeo ao fechar
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('proj-video-modal').addEventListener('click', function(e) {
+    if (e.target === this) fecharVideoModal();
+  });
+
+  /* Deriva thumbnail do YouTube a partir da URL de embed, se videoThumb não for informado */
+  function youtubeThumb(embedUrl) {
+    const m = embedUrl.match(/embed\/([^?]+)/);
+    return m ? 'https://img.youtube.com/vi/' + m[1] + '/hqdefault.jpg' : '';
+  }
+
+  /* ── App principal ───────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const container = document.getElementById('proj-paineis');
+    const tabs      = document.querySelectorAll('.proj-tab');
+    const area      = document.getElementById('projArea');
+    const painel    = document.getElementById('projPainelLateral');
+    const btnFechar = document.getElementById('projPainelFechar');
+    let cardAtivo   = null;
+    let slugAtivo   = null;
+
+    /* Atualiza o bloco de texto explicativo da categoria */
+    function atualizarCatInfo(cat) {
+      const info = categoriaInfo[cat];
+      document.getElementById('catInfoTitulo').textContent = info ? info.titulo : '';
+      document.getElementById('catInfoTexto').textContent  = info ? info.texto  : '';
+    }
+
+    /* ── Constrói todos os painéis de uma vez, mostrando só o ativo ── */
+    const categorias = ['api', 'academico', 'pessoal'];
+    atualizarCatInfo('api');
+
+    window.proj_atualizarCarrosséis = {};
+    window.proj_resetarCarrosséis = {};
+
+    categorias.forEach(function(cat) {
+      const painelEl = document.createElement('div');
+      painelEl.className = 'proj-painel' + (cat === 'api' ? ' ativo' : '');
+      painelEl.dataset.categoria = cat;
+
+      const projsCat = getPorCategoria(cat).slice().sort(function(a, b) {
+        const parse = function(str) {
+          const parts = str.split(' ');
+          const sem = parts[0];
+          const ano = parseInt(parts[parts.length - 1]);
+          return ano * 10 + (sem === '2º' ? 1 : 0);
+        };
+        return parse(a.periodo) - parse(b.periodo);
+      });
+
+      if (projsCat.length === 0) {
+        painelEl.innerHTML = '<p class="proj-vazio">Nenhum projeto nesta categoria ainda.</p>';
+        container.appendChild(painelEl);
+        return;
+      }
+
+      /* ── Carrossel ── */
+      const carouselWrap = document.createElement('div');
+      carouselWrap.className = 'proj-carousel-wrap';
+
+      const btnPrev = document.createElement('button');
+      btnPrev.className = 'proj-arrow proj-arrow-left';
+      btnPrev.innerHTML = '<i class="ti ti-chevron-left"></i>';
+      btnPrev.setAttribute('aria-label', 'Projeto anterior');
+
+      const btnNext = document.createElement('button');
+      btnNext.className = 'proj-arrow proj-arrow-right';
+      btnNext.innerHTML = '<i class="ti ti-chevron-right"></i>';
+      btnNext.setAttribute('aria-label', 'Próximo projeto');
+
+      const track = document.createElement('div');
+      track.className = 'proj-cards-track';
+
+      projsCat.forEach(function(proj, idx) {
+        const card = criarCard(proj, idx === 0 ? 'centro' : '');
+        track.appendChild(card);
+      });
+
+      carouselWrap.appendChild(btnPrev);
+      carouselWrap.appendChild(track);
+      carouselWrap.appendChild(btnNext);
+
+      /* ── Timeline sincronizada ── */
+      const periodos = getPeriodosOrdenados(cat);
+      const timeline = document.createElement('div');
+      timeline.className = 'proj-timeline-row';
+
+      const linha = document.createElement('div');
+      linha.className = 'proj-tl-linha';
+      timeline.appendChild(linha);
+
+      const periodsWrap = document.createElement('div');
+      periodsWrap.className = 'proj-tl-periodos';
+
+      periodos.forEach(function(periodo) {
+        const dotWrap = document.createElement('div');
+        dotWrap.className = 'proj-tl-periodo';
+        dotWrap.dataset.periodo = periodo;
+        dotWrap.innerHTML =
+          '<div class="proj-tl-dot"></div>' +
+          '<div class="proj-tl-label">' + periodo + '</div>';
+        periodsWrap.appendChild(dotWrap);
+        dotWrap.style.cursor = 'pointer';
+        dotWrap.addEventListener('click', function() {
+          const idx = projsCat.findIndex(function(p) {
+            return p.periodo === periodo;
+          });
+          if (idx !== -1) irPara(idx);
+        });
+      });
+      timeline.appendChild(periodsWrap);
+
+      /* ── Dots de navegação do carrossel ── */
+      const navDots = document.createElement('div');
+      navDots.className = 'proj-nav-dots';
+      projsCat.forEach(function(proj, idx) {
+        const d = document.createElement('span');
+        d.className = 'proj-nav-dot' + (idx === 0 ? ' ativo' : '');
+        navDots.appendChild(d);
+      });
+
+      painelEl.appendChild(carouselWrap);
+      painelEl.appendChild(timeline);
+      painelEl.appendChild(navDots);
+      container.appendChild(painelEl);
+
+      /* ── Lógica do carrossel desta categoria ──────────────────────
+         Único ponto de listener de clique por card — está dentro de
+         criarCard(). Um segundo listener aqui duplicava o clique e
+         causava o painel abrindo/fechando no mesmo evento. */
+      const cards = Array.from(track.children);
+      let indiceAtivo = cards.length - 1;
+
+      function atualizarCarrossel() {
+        cards.forEach(function(c, i) {
+          c.classList.toggle('centro', i === indiceAtivo);
+        });
+
+        const wrapRect = carouselWrap.getBoundingClientRect();
+        const cardRect = cards[indiceAtivo].getBoundingClientRect();
+        const wrapCenter = wrapRect.left + wrapRect.width / 2;
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const currentOffset = new DOMMatrix(getComputedStyle(track).transform).m41;
+        const newOffset = currentOffset - (cardCenter - wrapCenter);
+
+        track.style.transform = 'translateX(' + newOffset + 'px)';
+
+        const periodoAtivo = projsCat[indiceAtivo].periodo;
+        const dotAtivo = periodsWrap.querySelector('[data-periodo="' + periodoAtivo + '"]');
+        periodsWrap.querySelectorAll('.proj-tl-periodo').forEach(function(p) {
+          p.classList.toggle('ativo', p.dataset.periodo === periodoAtivo);
+        });
+
+        if (dotAtivo) {
+          const tlWrapRect = timeline.getBoundingClientRect();
+          const dotRect = dotAtivo.getBoundingClientRect();
+          const tlWrapCenter = tlWrapRect.left + tlWrapRect.width / 2;
+          const dotCenter = dotRect.left + dotRect.width / 2;
+          const currentTlOffset = new DOMMatrix(getComputedStyle(periodsWrap).transform).m41;
+          const newTlOffset = currentTlOffset - (dotCenter - tlWrapCenter);
+          periodsWrap.style.transform = 'translateX(' + newTlOffset + 'px)';
+        }
+
+        navDots.querySelectorAll('.proj-nav-dot').forEach(function(d, i) {
+          d.classList.toggle('ativo', i === indiceAtivo);
+        });
+      }
+
+      window.proj_atualizarCarrosséis[cat] = atualizarCarrossel;
+      window.proj_resetarCarrosséis = window.proj_resetarCarrosséis || {};
+      window.proj_resetarCarrosséis[cat] = function() {
+        indiceAtivo = cards.length - 1;
+        atualizarCarrossel();
+      };
+
+      function irPara(idx) {
+        indiceAtivo = Math.max(0, Math.min(cards.length - 1, idx));
+        atualizarCarrossel();
+      }
+
+      btnPrev.addEventListener('click', function() { irPara(indiceAtivo - 1); });
+      btnNext.addEventListener('click', function() { irPara(indiceAtivo + 1); });
+
+      /* Swipe touch */
+      let touchStartX = 0;
+      track.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+      });
+      track.addEventListener('touchend', function(e) {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          irPara(indiceAtivo + (diff > 0 ? 1 : -1));
+        }
+      });
+
+      /* Recalcula posição ao redimensionar */
+      window.addEventListener('resize', atualizarCarrossel);
+
+      /* Posição inicial após o card renderizar */
+      setTimeout(atualizarCarrossel, 0);
+
+      /* ── Cria um card da timeline ───────────────────────────────── */
+      function criarCard(proj, extraClasse) {
+        const card = document.createElement('div');
+        card.className = 'proj-card' + (extraClasse ? ' ' + extraClasse : '');
+        card.dataset.slug = proj.slug;
+
+        card.innerHTML =
+          '<div class="proj-card-nome">' + proj.nome + '</div>' +
+          '<div class="proj-card-subtitulo">' + proj.subtitulo + '</div>' +
+          '<div class="proj-card-meta">' +
+            '<span class="proj-card-semestre">' + (proj.semestre || proj.periodo) + '</span>' +
+            (proj.funcao ? '<span class="proj-card-funcao">' + proj.funcao + '</span>' : '') +
+          '</div>' +
+          '<p class="proj-card-descricao">' + proj.descricao + '</p>' +
+          '<span class="proj-card-btn">Ver detalhes <i class="ti ti-arrow-right"></i></span>';
+
+        card.addEventListener('click', function() {
+          const idx = cards.indexOf(card);
+          if (idx !== indiceAtivo) {
+            irPara(idx);
+            setTimeout(function() {
+              if (slugAtivo === proj.slug && painel.classList.contains('aberto')) {
+                fecharPainel(); return;
+              }
+              abrirPainel(proj.slug, card);
+            }, 350); /* aguarda a animação de centralização */
+            return;
+          }
+          if (slugAtivo === proj.slug && painel.classList.contains('aberto')) {
+            fecharPainel(); return;
+          }
+          abrirPainel(proj.slug, card);
+        });
+
+        return card;
+      }
+    });
+
+    /* ── Preenche e abre o painel lateral ────────────────────────── */
+    function abrirPainel(slug, card) {
+      const p = getPorSlug(slug);
+      if (!p) return;
+
+      /* Remove destaque do card anterior */
+      if (cardAtivo) cardAtivo.classList.remove('ativo');
+      cardAtivo = card;
+      card.classList.add('ativo');
+      slugAtivo = slug;
+
+      /* Meta: categoria · período · semestre */
+      const catLabel = { api: 'API · Integrador', academico: 'Acadêmico', pessoal: 'Pessoal' };
+      document.getElementById('modalMeta').textContent =
+        (catLabel[p.categoria] || p.categoria) + ' · ' + p.periodo +
+        (p.semestre ? ' · ' + p.semestre : '');
+
+      document.getElementById('modalNome').textContent      = p.nome;
+      document.getElementById('modalSubtitulo').textContent = p.subtitulo;
+
+      /* Badges: função + stack */
+      const badgesEl = document.getElementById('modalBadges');
+      badgesEl.innerHTML = '';
+      if (p.funcao) {
+        const b = document.createElement('span');
+        b.className = 'proj-modal-badge proj-modal-badge--funcao';
+        b.textContent = p.funcao;
+        badgesEl.appendChild(b);
+      }
+
+      /* Contexto: empresa + metodologia */
+      const ctxEl = document.getElementById('modalContexto');
+      ctxEl.innerHTML = '';
+      if (p.empresa) {
+        ctxEl.innerHTML +=
+          '<div class="proj-modal-ctx-item">' +
+            '<div class="proj-modal-ctx-label">Empresa parceira</div>' +
+            '<div class="proj-modal-ctx-valor">' + p.empresa + '</div>' +
+          '</div>';
+      }
+      if (p.metodologia) {
+        ctxEl.innerHTML +=
+          '<div class="proj-modal-ctx-item">' +
+            '<div class="proj-modal-ctx-label">Metodologia</div>' +
+            '<div class="proj-modal-ctx-valor">' + p.metodologia + '</div>' +
+          '</div>';
+      }
+      ctxEl.style.display = ctxEl.innerHTML ? 'flex' : 'none';
+
+      /* Textos do corpo */
+      document.getElementById('modalDescricao').textContent = p.descricao;
+      document.getElementById('modalProblema').textContent  = p.problema;
+      document.getElementById('modalSolucao').textContent   = p.solucao;
+
+      /* Atuação — oculta se não existir */
+      const atuacaoBloco = document.getElementById('modalAtuacaoBloco');
+      if (p.atuacao) {
+        document.getElementById('modalAtuacao').textContent = p.atuacao;
+        atuacaoBloco.style.display = '';
+      } else {
+        atuacaoBloco.style.display = 'none';
+      }
+
+      /* Stack como chips */
+      document.getElementById('modalStack').innerHTML =
+        p.stack.map(s => '<span class="tag">' + s + '</span>').join('');
+
+      /* ── Galeria — 1 imagem principal com badge de "+N", vídeo separado ── */
+      const galeriaEl = document.getElementById('modalGaleria');
+      galeriaEl.innerHTML = '';
+
+      const imagens = Array.isArray(p.imagem) ? p.imagem : (p.imagem ? [p.imagem] : []);
+
+      if (imagens.length > 0) {
+        const item = document.createElement('div');
+        item.className = 'proj-modal-galeria-item proj-modal-galeria-item--principal';
+        item.innerHTML =
+          '<img src="' + imagens[0] + '" alt="Preview — ' + p.nome + '">' +
+          (imagens.length > 1 ? '<span class="proj-modal-galeria-badge">+' + (imagens.length - 1) + '</span>' : '');
+        item.onclick = function() { abrirLightbox(imagens, 0); };
+        galeriaEl.appendChild(item);
+      }
+
+      if (p.video) {
+        const videoItem = document.createElement('div');
+        videoItem.className = 'proj-modal-galeria-item proj-modal-galeria-item--video';
+        videoItem.innerHTML =
+          '<img src="' + (p.videoThumb || youtubeThumb(p.video)) + '" alt="Vídeo — ' + p.nome + '">' +
+          '<span class="proj-modal-galeria-play"><i class="ti ti-player-play-filled"></i></span>';
+        videoItem.onclick = function() { abrirVideoModal(p.video); };
+        galeriaEl.appendChild(videoItem);
+      }
+
+      /* Links: GitHub + deploy */
+      const linksEl = document.getElementById('modalLinks');
+      linksEl.innerHTML = '';
+      if (p.links && p.links.github) {
+        linksEl.innerHTML +=
+          '<a href="' + p.links.github + '" target="_blank" rel="noopener" class="btn btn-secondary">' +
+          '<i class="ti ti-brand-github"></i> GitHub</a>';
+      }
+      if (p.links && p.links.deploy) {
+        linksEl.innerHTML +=
+          '<a href="' + p.links.deploy + '" target="_blank" rel="noopener" class="btn btn-primary">' +
+          '<i class="ti ti-external-link"></i> Ver deploy</a>';
+      }
+
+      painel.classList.add('aberto');
+      document.getElementById('projBackdrop').classList.add('aberto');
+      document.body.style.overflow = 'hidden';
+      painel.scrollTop = 0;
+    }
+
+    /* ── Fecha o painel ──────────────────────────────────────────── */
+    function fecharPainel() {
+      painel.classList.remove('aberto');
+      document.getElementById('projBackdrop').classList.remove('aberto');
+      document.body.style.overflow = '';
+      if (cardAtivo) { cardAtivo.classList.remove('ativo'); cardAtivo = null; }
+      slugAtivo = null;
+    }
+
+    btnFechar.addEventListener('click', fecharPainel);
+
+    /* Fechar ao clicar fora do painel e fora de um card */
+    document.addEventListener('click', function(e) {
+      if (!painel.classList.contains('aberto')) return;
+      if (painel.contains(e.target)) return;
+      if (e.target.closest('.proj-card')) return;
+      fecharPainel();
+    });
+
+    /* Fechar com Escape */
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { fecharLightbox(); fecharVideoModal(); fecharPainel(); }
+    });
+
+    /* ── Troca de tabs ───────────────────────────────────────────── */
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tabs.forEach(t => t.classList.remove('ativo'));
+        this.classList.add('ativo');
+        const cat = this.dataset.categoria;
+        atualizarCatInfo(cat);
+        document.querySelectorAll('.proj-painel').forEach(function(p) {
+          p.classList.toggle('ativo', p.dataset.categoria === cat);
+        });
+        fecharPainel();
+        if (window.proj_resetarCarrosséis[cat]) {
+          setTimeout(window.proj_resetarCarrosséis[cat], 0);
+        }
+      });
+    });
+
+  }); // DOMContentLoaded
+  </script>
+
+</body>
+</html>

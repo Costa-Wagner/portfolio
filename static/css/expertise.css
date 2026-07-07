@@ -1,0 +1,383 @@
+/* ══════════════════════════════════════
+   expertise.css — Wagner Gonçalves Costa
+   Layout: 2/3 certificados + 1/3 tecnologias/metodologias
+   ══════════════════════════════════════ */
+
+.content {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* .comp-subtitulo {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+} */
+
+.comp-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.comp-header-icon {
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.comp-header-titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ══════════════════════════════════════
+   LAYOUT PRINCIPAL — 2fr/1fr
+   ══════════════════════════════════════ */
+
+.comp-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+/* ══════════════════════════════════════
+   COLUNA ESQUERDA: CERTIFICADOS
+   ══════════════════════════════════════ */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.cert-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.cert-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.cert-img-wrap {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+
+.cert-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cert-body {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.cert-nome {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.cert-instituicao {
+  font-size: 0.78rem;
+  color: var(--color-primary-mid);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin: 0;
+}
+
+.cert-instituicao .ti {
+  color: var(--color-primary-mid);
+}
+
+.cert-descricao {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  text-align: justify;
+}
+
+.cert-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--spacing-xs);
+}
+
+.cert-link .ti {
+  font-size: 0.85rem;
+}
+
+.cert-lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    justify-content:center;
+    align-items:flex-start;
+    padding-top:100px;
+    background:rgba(0,0,0,.75);
+    z-index:9999;
+}
+
+.cert-lightbox.aberto{
+    display:flex;
+}
+
+.cert-lightbox-content{
+    position:relative;
+    display:inline-block;
+}
+
+.cert-lightbox img{
+    display:block;
+    max-width:100vw;
+    max-height:80vh;
+    border-radius:var(--radius-md);
+    box-shadow:0 8px 40px var(--color-primary);
+}
+
+.cert-lightbox-fechar{
+    position:absolute;
+    top:var(--spacing-md);
+    right:var(--spacing-md);
+    width:var(--spacing-xl);
+    height:var(--spacing-xl);
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.65);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    z-index:20;
+    transition: background var(--transition);
+}
+
+.cert-lightbox-fechar:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ══════════════════════════════════════
+   COLUNA DIREITA: TECNOLOGIAS + METODOLOGIAS
+   ══════════════════════════════════════ */
+
+.comp-col-tech {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  /* acompanha o scroll da coluna de certificados, que é mais alta */
+  position: sticky;
+  top: 90px;
+  padding-left: var(--spacing-xl);
+  border-left: 2px solid var(--color-border);
+  width: 100%;
+}
+
+.tech-bloco {
+  padding: 0;
+}
+
+/* Grid compacto de logos — 3 colunas para caber bem no 1/3 da página */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.tech-grupo-row .tech-grid {
+  justify-content: flex-start;
+}
+
+.tech-grupo--start .tech-grid {
+  justify-content: flex-start;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  width: 40px;
+}
+
+.tech-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.tech-nome {
+  font-size: 0.65rem;
+  color: var(--color-text-secondary);
+  line-height: 1.2;
+}
+
+.tech-grupo {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.tech-grupo:last-child {
+  margin-bottom: 0;
+}
+
+.tech-grupo-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tech-grupo-icon {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+
+.tech-grupo-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+}
+
+.tech-grupo-row {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.tech-grupo-row .tech-grupo {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.tech-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-primary-mid);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.tech-aviso-icon {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tech-aviso-titulo {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+
+.tech-aviso-texto {
+  font-size: 0.75rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVO
+   ══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .comp-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .comp-col-tech {
+    position: static;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+  }
+
+  .tech-grupo--start .tech-grid {
+    justify-content: center;
+  }
+
+  .cert-lightbox{
+        padding-top:90px;
+    }
+
+    .cert-lightbox img{
+        max-width:85vw;
+        max-height:70vh;
+    }
+
+    .cert-lightbox-fechar{
+
+        top:var(--spacing-sm);
+        right:var(--spacing-sm);
+
+        width:var(--spacing-lg);
+        height:var(--spacing-lg);
+    }
+
+}
+
+@media (max-width: 480px) {
+  .tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

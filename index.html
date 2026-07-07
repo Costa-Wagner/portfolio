@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ── SEO e preview social ──────────────────────────────
+     As tags Open Graph controlam como o link aparece
+     quando compartilhado no LinkedIn, WhatsApp, etc.
+     ─────────────────────────────────────────────────── -->
+
+  <!-- Descrição da página — aparece nos resultados do Google -->
+  <meta name="description" content="Wagner Costa — Desenvolvedor de Software com background em Engenharia de Produção, Gestão Administrativa e Gestão Pública. Cursando DSM na FATEC/SJC." />
+
+  <!-- Palavras-chave relevantes para buscas -->
+  <meta name="keywords" content="desenvolvedor de software, análise de sistemas, DSM, FATEC, desenvolvimento full stack, engenharia de produção, portfólio, Wagner Costa, São José dos Campos" />
+
+  <!-- Autor da página -->
+  <meta name="author" content="Wagner Costa" />
+
+  <!-- Open Graph — título que aparece no preview do link -->
+  <meta property="og:title" content="Wagner Costa · Desenvolvedor de Software" />
+
+  <!-- Open Graph — descrição do preview -->
+  <meta property="og:description" content="Background em Engenharia de Produção, Gestão Administrativa e Gestão Pública — desenvolvendo soluções que conectam tecnologia com visão de negócio." />
+
+  <!-- Open Graph — URL canônica do site -->
+  <meta property="og:url" content="https://portfolio-wagner-nu.vercel.app/" />
+
+  <!-- Open Graph — tipo de conteúdo -->
+  <meta property="og:type" content="website" />
+
+  <!-- Open Graph — idioma -->
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Open Graph — imagem de preview (1200x630px ideal)
+      Use sua foto de perfil ou crie uma imagem de capa.
+      Coloque o arquivo em static/images/profile/og-image.jpg -->
+  <meta property="og:image" content="https://portfolio-wagner-nu.vercel.app/static/images/profile/og-image.jpg" />
+
+  <!-- Canonical — evita conteúdo duplicado se o site
+      for acessado por URLs diferentes -->
+  <link rel="canonical" href="https://portfolio-wagner-nu.vercel.app/" />
+  
+  <title> WAGNER COSTA · Desenvolvedor de Software - </title>
+
+  <script>
+    // Captura o texto que está dentro da tag <title>
+    let docTitle = document.title;
+
+    setInterval(() => {
+      // Move a primeira letra para o final do texto
+      docTitle = docTitle.substring(1) + docTitle.substring(0, 1);
+      // Atualiza a aba com o novo texto movido
+      document.title = docTitle;
+    }, 300);
+  </script>
+
+  <!-- Bootstrap CSS — instalado localmente via npm
+       Caminho: node_modules/bootstrap/dist/css/ -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+  <!-- Tabler Icons — instalado localmente via npm
+       Catálogo: https://tabler.io/icons
+       Uso: <i class="ti ti-nome-do-icone"></i> -->
+  <link rel="stylesheet" href="node_modules/@tabler/icons-webfont/dist/tabler-icons.min.css" />
+
+  <!-- CSS globais do projeto -->
+  <link rel="stylesheet" href="static/css/base.css" />
+  <link rel="stylesheet" href="static/css/header.css" />
+  <link rel="stylesheet" href="static/css/footer.css" />
+
+  <!-- CSS específico desta página -->
+  <link rel="stylesheet" href="static/css/sobre.css" />
+</head>
+
+<body>
+
+  <!-- Header e onda superior injetados pelo loader.js -->
+  <div id="header-placeholder"></div>
+
+  <!-- ══════════════════════════════════
+       CONTEÚDO — Página Sobre / Home
+  ══════════════════════════════════ -->
+  <main>
+    <section class="content">
+
+      <!-- ── HERO ─────────────────────────────────────────
+           Layout: foto à esquerda, texto à direita.
+           Flex em desktop, coluna em mobile.
+           ─────────────────────────────────────────────── -->
+      <div class="hero-section">
+
+        <!-- Foto de perfil -->
+        <div class="hero-photo-wrap">
+          <img
+            src="./assets/images/profile/Wagner.0.png"
+            alt="Foto de Wagner Costa"
+            class="hero-photo"
+          />
+        </div>
+
+        <!-- Texto e CTAs -->
+        <div class="hero-info">
+
+          <p class="hero-label">Desenvolvedor de Software · Análise de Sistemas</p>
+          <h1 class="hero-name">Wagner Costa</h1>
+
+          <p class="hero-tagline">
+            Background em <strong>Engenharia de Produção, Gestão Administrativa e Gestão Pública</strong> - desenvolvendo soluções que conectam tecnologia com visão de negócio.
+          </p>
+
+          <!-- CTAs visíveis antes do scroll.
+               Recrutador interessado age sem precisar navegar. -->
+          <div class="hero-ctas">
+            <a href="projetos.html" class="btn btn-primary">
+              <i class="ti ti-folder"></i> Ver projetos
+            </a>
+            <a href="cv.html" class="btn btn-secondary">
+              <i class="ti ti-download"></i> Ver C.V.
+            </a>
+            <a href="contato.html" class="btn btn-secondary">
+              <i class="ti ti-mail"></i> Contato
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── BLOCOS DE DIFERENCIAL ──────────────────────────
+           3 cards resumindo a trajetória profissional.
+           Comunicam o diferencial visualmente, sem exigir
+           leitura de parágrafos longos.
+           ─────────────────────────────────────────────── -->
+      <div class="diff-blocks">
+
+        <div class="diff-card">
+          <div class="diff-card-header">
+            <i class="ti ti-building-factory-2 diff-icon"></i>
+            <h3 class="diff-title">Indústria</h3>
+          </div>
+          <p class="diff-desc">
+            Engenharia de Produção, controle de qualidade
+            e gestão de processos industriais.
+          </p>
+        </div>
+
+        <div class="diff-card destaque">
+          <div class="diff-card-header">
+            <i class="ti ti-code diff-icon"></i>
+            <h3 class="diff-title">Desenvolvimento de Software</h3>
+          </div>
+          <p class="diff-desc">
+            DSM · FATEC/SJC - projetos práticos em desenvolvimento full stack.
+          </p>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-card-header">
+            <i class="ti ti-building-community diff-icon"></i>
+            <h3 class="diff-title">Setor Público</h3>
+          </div>
+          <p class="diff-desc">
+            Administração e gestão de processos
+            em órgãos públicos.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- ── BIO ───────────────────────────────────────────
+           Texto de apresentação focado no recrutador.
+           Dados pessoais removidos desta área — não agregam
+           antes da proposta de valor profissional.
+           ─────────────────────────────────────────────── -->
+      <div class="bio-section">
+
+        <span class="section-label">Trajetória</span>
+
+        <p class="bio-text">
+          Ao longo da carreira, fui movido por entender como processos funcionam,
+          identificar possíveis falhas e aprimorar soluções. Fiz isso na produção,
+          na gestão pública e hoje aplico essa mesma lógica no desenvolvimento
+          de sistemas.
+        </p>
+
+        <p class="bio-text">
+          Curso <strong>DSM · Desenvolvimento de Software Multiplataforma
+          na FATEC/SJC</strong>, desenvolvendo projetos práticos com foco em
+          construir uma base técnica orientada à resolução de problemas reais.
+        </p>
+
+        <!-- Stack como tags visuais — fácil de escanear em segundos -->
+        <div class="stack-tags">
+          <span class="tag">HTML · CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Python · Flask</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Scrum</span>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer e onda inferior injetados pelo loader.js -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Bootstrap JS — necessário para o menu hambúrguer -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- loader.js — injeta header/footer e aplica "active" no menu -->
+  <script src="js/loader.js"></script>
+
+  <!-- script.js — GA4, eventos de engajamento, lógica geral -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>

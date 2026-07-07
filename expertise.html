@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wagner Costa — Competências técnicas, formação e certificados." />
+
+  <title>EXPERTISE · Wagner Costa</title>
+
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="node_modules/@tabler/icons-webfont/dist/tabler-icons.min.css" />
+
+  <link rel="stylesheet" href="static/css/base.css" />
+  <link rel="stylesheet" href="static/css/header.css" />
+  <link rel="stylesheet" href="static/css/footer.css" />
+  <link rel="stylesheet" href="static/css/expertise.css" />
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="content">
+
+      <!-- ── LAYOUT PRINCIPAL: 2/3 certificados + 1/3 tecnologias ──
+           Grid com proporção 2fr/1fr em desktop, empilha em mobile.
+           ────────────────────────────────────────────────────── -->
+      <div class="comp-layout">
+
+        <!-- ── COLUNA ESQUERDA (2/3): Formação e Certificados ── -->
+        <div class="comp-col-certs">
+          <div class="comp-header">
+            <i class="ti ti-award comp-header-icon"></i>
+            <h3 class="comp-header-titulo">Certificados</h3>
+          </div>
+
+          <div class="cert-grid">
+
+            <!-- CERT 1 -->
+            <article class="cert-card" 
+              data-cert-img="assets/images/certificates/certif-escola-inovadores.png">
+
+              <div class="cert-img-wrap">
+                <img
+                  src="assets/images/certificates/certif-escola-inovadores.png"
+                  alt="Certificado: Escola de Inovadores"
+                  class="cert-img"
+                />
+              </div>
+             
+              <div class="cert-body">
+                <h4 class="cert-nome">Escola de Inovadores</h4>
+                <p class="cert-instituicao">
+                  <i class="ti ti-building"></i> FATEC
+                </p>
+
+                <p class="cert-descricao">Curso de extensão em empreendedorismo que visa fornecer um ferramental
+                básico de Empreendedorismo e Inovação.</p>
+
+                <a href="#" class="cert-link" target="_blank" rel="noopener">
+                  Site do Curso <i class="ti ti-external-link"></i>
+                </a>
+              </div>
+              
+            </article>
+
+            <!-- CERT 2 -->
+            <article class="cert-card"
+              data-cert-img="assets/images/certificates/certif-python-bradesco.png">
+
+              <div class="cert-img-wrap">
+                <img
+                  src="assets/images/certificates/certif-python-bradesco.png"
+                  alt="Certificado: Python Básico"
+                  class="cert-img"
+                />
+              </div>
+              
+              <div class="cert-body">
+                <h4 class="cert-nome">Python Básico</h4>
+                <p class="cert-instituicao">
+                  <i class="ti ti-building"></i> Fundação Bradesco
+                </p>
+
+                <p class="cert-descricao">Curso introdutório à linguagem Python, com foco em raciocínio lógico e 
+                desenvolvimento de programas básicos em modo console, utilizando a IDE PyCharm.</p>
+
+                <a href="#" class="cert-link" target="_blank" rel="noopener">
+                  Site do Curso <i class="ti ti-external-link"></i>
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ── COLUNA DIREITA (1/3): Tecnologias + Metodologias ── -->
+        <div class="comp-col-tech">
+
+          <!-- ── Tecnologias com logo ── -->
+          <div class="tech-bloco">
+            <div class="comp-header">
+              <i class="ti ti-code comp-header-icon"></i>
+              <h3 class="comp-header-titulo">Tecnologias</h3>
+            </div>
+            <div class="tech-bloco">
+
+              <div class="tech-grupo">
+                <div class="tech-grupo-header">
+                  <i class="ti ti-device-desktop tech-grupo-icon"></i>
+                  <span class="tech-grupo-label">Frontend</span>
+                </div>
+                <div class="tech-grid">
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/html.svg" alt="HTML" class="tech-logo" />
+                    <span class="tech-nome">HTML</span>
+                  </div>          
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/css.svg" alt="CSS" class="tech-logo" />
+                    <span class="tech-nome">CSS</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/javascript.png" alt="JavaScript" class="tech-logo" />
+                    <span class="tech-nome">JavaScript</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/typescript.svg" alt="TypeScript" class="tech-logo" />
+                    <span class="tech-nome">TypeScript</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/react.svg" alt="React" class="tech-logo" />
+                    <span class="tech-nome">React</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/figma.png" alt="Figma" class="tech-logo" />
+                    <span class="tech-nome">Figma</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tech-grupo tech-grupo--start">
+                <div class="tech-grupo-header">
+                  <i class="ti ti-server-2 tech-grupo-icon"></i>
+                  <span class="tech-grupo-label">Backend</span>
+                </div>
+                <div class="tech-grid">
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/python.svg" alt="Python" class="tech-logo" />
+                    <span class="tech-nome">Python</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/flask.png" alt="Flask" class="tech-logo" />
+                    <span class="tech-nome">Flask</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/mysql.svg" alt="MySQL" class="tech-logo" />
+                    <span class="tech-nome">MySQL</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tech-grupo">
+                <div class="tech-grupo-header">
+                  <i class="ti ti-cloud tech-grupo-icon"></i>
+                  <span class="tech-grupo-label">DevOps</span>
+                </div>
+                <div class="tech-grid">
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/git.svg" alt="Git" class="tech-logo" />
+                    <span class="tech-nome">Git</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/github.svg" alt="GitHub" class="tech-logo" />
+                    <span class="tech-nome">GitHub</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/docker.png" alt="Docker" class="tech-logo" />
+                    <span class="tech-nome">Docker</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/aws.png" alt="AWS" class="tech-logo" />
+                    <span class="tech-nome">AWS</span>
+                  </div>
+                  <div class="tech-item">
+                    <img src="assets/images/technologies/vercel.png" alt="Vercel" class="tech-logo" />
+                    <span class="tech-nome">Vercel</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tech-grupo-row">
+                <div class="tech-grupo">
+                  <div class="tech-grupo-header">
+                    <i class="ti ti-chart-bar tech-grupo-icon"></i>
+                    <span class="tech-grupo-label">Dados</span>
+                  </div>
+                  <div class="tech-grid">
+                    <div class="tech-item">
+                      <img src="assets/images/technologies/plotly.png" alt="Plotly" class="tech-logo" />
+                      <span class="tech-nome">Plotly</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tech-grupo">
+                  <div class="tech-grupo-header">
+                    <i class="ti ti-checklist tech-grupo-icon"></i>
+                    <span class="tech-grupo-label">Gestão</span>
+                  </div>
+                  <div class="tech-grid">
+                    <div class="tech-item">
+                      <img src="assets/images/technologies/jira.png" alt="Jira" class="tech-logo" />
+                      <span class="tech-nome">Jira</span>
+                    </div>
+                    <div class="tech-item">
+                      <i class="ti ti-refresh tech-logo" style="font-size:32px; color:var(--color-accent);"></i>
+                      <span class="tech-nome">Scrum</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="tech-aviso">
+              <i class="ti ti-info-circle tech-aviso-icon"></i>
+              <div>
+                <strong class="tech-aviso-titulo">Tecnologias em aprendizado</strong>
+                <p class="tech-aviso-texto">
+                  As tecnologias listadas refletem minha jornada de aprendizado contínuo —
+                  através da faculdade (DSM · FATEC/SJC), projetos práticos e estudo autodidata.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <div class="cert-lightbox" id="certLightbox">
+
+      <div class="cert-lightbox-content">
+
+          <button class="cert-lightbox-fechar" id="certLightboxFechar">
+              <i class="ti ti-x"></i>
+          </button>
+
+          <img id="certLightboxImg" src="" alt="Certificado ampliado">
+
+      </div>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/script.js"></script>
+
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const lightbox = document.getElementById('certLightbox');
+    const lightboxImg = document.getElementById('certLightboxImg');
+    const btnFechar = document.getElementById('certLightboxFechar');
+
+    document.querySelectorAll('.cert-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('.cert-link')) return; // não abre lightbox ao clicar no link
+        const src = card.dataset.certImg;
+        if (!src) return;
+        lightboxImg.src = src;
+        lightbox.classList.add('aberto');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    btnFechar.addEventListener('click', fecharCertLightbox);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) fecharCertLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') fecharCertLightbox();
+    });
+
+    function fecharCertLightbox() {
+      lightbox.classList.remove('aberto');
+      document.body.style.overflow = '';
+    }
+  });
+  </script>
+
+</body>
+</html>

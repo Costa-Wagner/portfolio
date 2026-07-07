@@ -1,0 +1,92 @@
+/* ══════════════════════════════════════
+   footer.css — Wagner Gonçalves Costa
+   ══════════════════════════════════════ */
+
+/* ── Onda de transição: conteúdo → footer ──────────────────
+   background-color igual ao fundo do conteúdo para evitar
+   gaps nas laterais em telas muito largas. */
+.footer-wave {
+  display: block;
+  overflow: hidden;
+  line-height: 0;
+  background-color: var(--color-bg);
+}
+
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  /* Altura reduzida — ondas mais suaves e baixas */
+  height: 120px;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer.footer {
+  background-color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  padding: 8px 24px 16px;
+}
+
+footer.footer p {
+  font-size: 0.75rem;
+  margin: 2px 0;
+  line-height: 1.6;
+}
+
+footer.footer .footer-tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+footer.footer .footer-copy {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.7rem;
+}
+
+/* ── Ícones de redes sociais ─────────────────────────────
+   Sem círculo — apenas o ícone Tabler diretamente.
+   O link vira o elemento clicável. */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.footer-icons a {
+  /* Remove sublinhado e herda a cor definida abaixo */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.footer-icons a .ti {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+}
+
+.footer-icons a:hover .ti {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ── Responsivo ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .footer-wave svg {
+    height: 36px;
+  }
+
+  .footer-icons a .ti {
+    font-size: 20px;
+  }
+
+  footer.footer {
+    padding: 6px 16px 12px;
+  }
+}
