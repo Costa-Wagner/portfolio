@@ -32,7 +32,7 @@ const projetos = [
     semestre:    '2º sem · DSM',
     categoria:   'api',
     funcao:      'DevTeam · FrontEnd',
-    stack:       ['React', 'Flask', 'MySQL', 'Docker', 'AWS'],
+    stack:       ['HTML', 'CSS', 'React', 'JavaScript', 'Node.js', 'Python', 'Flask', 'MySQL', 'Docker', 'AWS', 'Figma', 'Jira', 'GitHub'],
     empresa:     'AKAER · SJC/SP',
     metodologia: 'Scrum · Jira',
     descricao:   'Plataforma web desenvolvida em parceria com empresa do setor aeroespacial AKAER, para centralizar, organizar e filtrar requisitos normativos com controle de acesso multinível.',
@@ -55,7 +55,7 @@ const projetos = [
     semestre:    '1º sem · DSM',
     categoria:   'api',
     funcao:      'Product Owner',
-    stack:       ['Python', 'Flask', 'Plotly', 'Pandas', 'Docker'],
+    stack:       ['HTML', 'CSS', 'Python', 'Flask', 'Plotly', 'Pandas', 'Vercel', 'Docker', 'AWS', 'Figma', 'Jira', 'GitHub', 'GoogleColab'],
     empresa:     'Cliente Fictício · Prefeitura',
     metodologia: 'Scrum · Jira',
     descricao:   'Dashboard interativo para visualização e análise de dados demográficos municipais, facilitando a distribuição estratégica de recursos públicos.',
@@ -99,7 +99,7 @@ const projetos = [
     periodo:     '2º sem 2025',
     semestre:    '1º sem · DSM',
     categoria:   'academico',
-    funcao:      '',
+    funcao:      'FrontEnd',
     stack:       ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
     empresa:     '',
     metodologia: '',
@@ -111,6 +111,29 @@ const projetos = [
     links: {
       github: 'https://github.com/Costa-Wagner/PORTFOLIO',
       deploy: 'https://portfolio-wagner-nu.vercel.app',
+    }
+  },
+
+  // ── PESSOAL ──────────────────────────────────────────────────────────
+  {
+    slug:        'pessoal-ws',
+    nome:        'WS Art&Decor',
+    subtitulo:   'Site pessoal',
+    periodo:     '2º sem 2025',
+    semestre:    '1º sem · DSM',
+    categoria:   'pessoal',
+    funcao:      'FrontEnd',
+    stack:       ['HTML5', 'CSS', 'JavaScript', 'Bootstrap', 'Vercel'],
+    empresa:     '',
+    metodologia: '',
+    descricao:   'Projeto acadêmico representando o primeiro contato com o desenvolvimento de aplicações web, envolvendo a criação de um site pessoal e a aplicação de conceitos básicos de front-end, experiência do usuário e design digital.',
+    problema:    '',
+    solucao:     '',
+    atuacao:     'Projeto introdutório de desenvolvimento web com foco em UX e design digital.',
+    imagem:      'assets/images/projects/pessoais/proj-1-site.png',
+    links: {
+      github: 'https://github.com/Costa-Wagner/WS.start',
+      deploy: 'https://ws-start-ten.vercel.app/',
     }
   }
 
