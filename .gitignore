@@ -1,2 +1,8 @@
 REALESE.md
 node_modules
+
+# Vídeos locais não são mais necessários — projetos usam embed do YouTube
+*.mp4
+*.mov
+*.avi
+*.webm

@@ -559,6 +559,7 @@
   /* força o grid a se comportar como bloco independente do flex pai */
   align-self: stretch;
   min-width: 0;
+  /* white-space: pre-line; */
 }
 
 /* garante que os filhos do grid não colapsam */
@@ -568,7 +569,7 @@
 }
 
 .proj-modal-secao {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
 }
 
 .proj-modal-secao-titulo {
@@ -835,15 +836,16 @@
 
   .proj-painel-lateral {
     position: fixed;
-    inset: 0;
-    top: 70px; /* abaixo da navbar */
-    /* max-height: none é inofensivo aqui — a altura já fica travada
-       pelas bordas opostas (inset:0 + top:70px = 100vh - 70px).
-       overflow:hidden e o scroll do corpo continuam herdados da
-       regra base acima. */
+    top: 110px;
+    left: 16px;
+    right: 16px;
+    bottom: 24px;
+    transform: none;
+    width: auto;
     max-height: none;
-    border-radius: 0;
-    z-index: 200;
+    border-radius: var(--radius-lg);
+    z-index: 300;
+    overflow: hidden;
   }
 
   .proj-periodo-label {
@@ -864,6 +866,8 @@
 
   .proj-modal-corpo {
     grid-template-columns: 1fr;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .proj-modal-col-recursos {
@@ -874,21 +878,25 @@
   }
 }
 
+/* Substitua o bloco .proj-tabs dentro de @media (max-width: 480px) */
 @media (max-width: 480px) {
   .proj-tabs {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;              /* nunca quebra linha */
+    gap: 6px;
+    overflow-x: auto;               /* scroll como fallback, não wrap */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox: esconde a barra */
+    padding-bottom: 2px;
   }
 
-  .proj-modal-rodape {
-    flex-direction: column;
+  .proj-tabs::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari: esconde a barra */
   }
 
-  .proj-modal-img-box img {
-    width: 100%;
-    height: 120px;
-  }
-
-  .proj-modal-problema-solucao {
-    grid-template-columns: 1fr;
+  .proj-tab {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    white-space: nowrap;            /* impede quebra de texto dentro do botão */
+    flex-shrink: 0;
   }
 }

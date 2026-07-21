@@ -160,6 +160,7 @@
   <script src="js/script.js"></script>
 
   <script>
+    
   /* ══════════════════════════════════════════════════════════════════
      projetos.html — lógica de UI
      Depende de: projetos-data.js (categoriaInfo, getPorCategoria,
@@ -511,10 +512,13 @@
       document.getElementById('modalProblema').textContent  = p.problema;
       document.getElementById('modalSolucao').textContent   = p.solucao;
 
-      /* Atuação — oculta se não existir */
       const atuacaoBloco = document.getElementById('modalAtuacaoBloco');
-      if (p.atuacao) {
-        document.getElementById('modalAtuacao').textContent = p.atuacao;
+      if (p.atuacao && p.atuacao.length) {
+        const itens = Array.isArray(p.atuacao) ? p.atuacao : [p.atuacao];
+        document.getElementById('modalAtuacao').innerHTML =
+          '<ul class="proj-modal-atuacao-lista">' +
+          itens.map(i => '<li>' + i + '</li>').join('') +
+          '</ul>';
         atuacaoBloco.style.display = '';
       } else {
         atuacaoBloco.style.display = 'none';
